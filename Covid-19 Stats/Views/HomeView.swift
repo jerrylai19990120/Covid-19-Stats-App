@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HomeView.swift
 //  Covid-19 Stats
 //
 //  Created by Jerry Lai on 2021-03-11.
@@ -8,14 +8,18 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HomeView: View {
     var body: some View {
-        Text("Hello, World!")
+        GeometryReader { gr in
+            VStack {
+                HomeViewBanner(gr: gr)
+            }
+        }//geo reader
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HomeView()
     }
 }
