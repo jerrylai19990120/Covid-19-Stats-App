@@ -14,39 +14,80 @@ struct HomeViewBanner: View {
     
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
+    
     var body: some View {
-        
-        ZStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(bgColor)
-                .frame(width: gr.size.width*0.9, height: gr.size.height*0.2)
-            
+        ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                Image("fever")
-                    .resizable()
-                    .renderingMode(.original)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: gr.size.width*0.46, height: gr.size.width*0.46)
+                //first banner
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(bgColor)
+                        .frame(width: gr.size.width*0.9, height: gr.size.height*0.2)
                     
-                VStack(spacing: gr.size.height*0.02) {
-                    Text("5 Symtomps of Covid - 19")
-                        .foregroundColor(fontColor)
-                        .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
+                    HStack {
+                        Image("fever")
+                            .resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: gr.size.width*0.42, height: gr.size.width*0.46)
+                            
+                        VStack(spacing: gr.size.height*0.02) {
+                            Text("5 Symtomps of Covid - 19")
+                                .foregroundColor(fontColor)
+                                .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
+                                .frame(width: gr.size.width*0.5)
+                            
+                            VStack {
+                                Text("Read More")
+                                    .foregroundColor(fontColor)
+                                    .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
+                                
+                                Rectangle()
+                                    .fill(fontColor)
+                                    .frame(width: gr.size.width*0.2, height: 2)
+                                
+                            }
+                            
+                        }.offset(x: -gr.size.width*0.06)
+                    }
+                }
+                
+                //second banner
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(bgColor)
+                        .frame(width: gr.size.width*0.9, height: gr.size.height*0.2)
                     
-                    VStack {
-                        Text("Read More")
-                            .foregroundColor(fontColor)
-                            .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
-                        Rectangle()
-                            .fill(fontColor)
-                            .frame(width: gr.size.width*0.2, height: 2)
-                        
+                    HStack {
+                        Image("fever2")
+                            .resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: gr.size.width*0.51, height: gr.size.width*0.51)
+                            
+                        VStack(spacing: gr.size.height*0.02) {
+                            Text("What to do if tested positive?")
+                                .foregroundColor(fontColor)
+                                .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
+                                .frame(width: gr.size.width*0.5)
+                            
+                            VStack {
+                                Text("Read More")
+                                    .foregroundColor(fontColor)
+                                    .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
+                                Rectangle()
+                                    .fill(fontColor)
+                                    .frame(width: gr.size.width*0.2, height: 2)
+                                
+                            }
+                            
+                        }.offset(x: -gr.size.width*0.1)
                     }
                     
                 }
-            }//.offset(x: -gr.size.width*0.06)
-            
-        }.padding()
+            }
+        }
+        
     }
 }
 
@@ -57,3 +98,5 @@ struct HomeViewBanner_Previews: PreviewProvider {
         }
     }
 }
+
+

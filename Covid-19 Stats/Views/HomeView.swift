@@ -12,7 +12,7 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { gr in
             VStack {
-                HomeViewBanner(gr: gr)
+                HomeViewBanner(gr: gr).padding(.leading)
             }
         }//geo reader
     }
