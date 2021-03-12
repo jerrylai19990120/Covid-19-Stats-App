@@ -11,6 +11,7 @@
 		921A972E25FAD22600B1B425 /* HomeViewBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A972D25FAD22600B1B425 /* HomeViewBanner.swift */; };
 		921A973125FAE27700B1B425 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 921A973025FAE27700B1B425 /* SwiftUICharts */; };
 		921A973325FAE46D00B1B425 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A973225FAE46D00B1B425 /* CustomTabBar.swift */; };
+		924AB38F25FC0EA4005E2003 /* OptionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924AB38E25FC0EA4005E2003 /* OptionsBar.swift */; };
 		9284E73525FAC9D6003E10AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9284E73425FAC9D6003E10AD /* AppDelegate.swift */; };
 		9284E73725FAC9D6003E10AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9284E73625FAC9D6003E10AD /* SceneDelegate.swift */; };
 		9284E73925FAC9D6003E10AD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9284E73825FAC9D6003E10AD /* HomeView.swift */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		921A972D25FAD22600B1B425 /* HomeViewBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewBanner.swift; sourceTree = "<group>"; };
 		921A973225FAE46D00B1B425 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		924AB38E25FC0EA4005E2003 /* OptionsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsBar.swift; sourceTree = "<group>"; };
 		9284E73125FAC9D6003E10AD /* Live Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Live Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9284E73425FAC9D6003E10AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9284E73625FAC9D6003E10AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			children = (
 				921A972D25FAD22600B1B425 /* HomeViewBanner.swift */,
 				921A973225FAE46D00B1B425 /* CustomTabBar.swift */,
+				924AB38E25FC0EA4005E2003 /* OptionsBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				924AB38F25FC0EA4005E2003 /* OptionsBar.swift in Sources */,
 				9284E73525FAC9D6003E10AD /* AppDelegate.swift in Sources */,
 				921A973325FAE46D00B1B425 /* CustomTabBar.swift in Sources */,
 				921A972E25FAD22600B1B425 /* HomeViewBanner.swift in Sources */,
