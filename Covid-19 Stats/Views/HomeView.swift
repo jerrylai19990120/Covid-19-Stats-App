@@ -11,62 +11,30 @@ import SwiftUICharts
 
 struct HomeView: View {
     
-    let styles = [
-        ChartStyle(backgroundColor:Color(red: 52/255, green: 138/255, blue: 123/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
-        ChartStyle(backgroundColor:Color(red: 255/255, green: 131/255, blue: 104/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
-        ChartStyle(backgroundColor: Color(red: 255/255, green: 211/255, blue: 98/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear)
-    ]
+    @State var selection = 0
     
     var body: some View {
         GeometryReader { gr in
             VStack(spacing: 0) {
-                Spacer()
-                HomeViewBanner(gr: gr).padding(.leading)
-                
-                InfoSection(gr: gr)
-                
-                Spacer()
-                
-                VStack(spacing: 0) {
-                    SubHeader(gr: gr)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack {
-                            LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(gr.size.width*0.0018)
-                                
-                            
-                            LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
-                                .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(gr.size.width*0.0018)
-                            
-                            LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
-                                .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(gr.size.width*0.0018)
-                            
-                            
-                        }
-                        
-                    }
+                if self.selection == 0 {
+                    MainView(gr: gr)
                 }
                 
+                if self.selection == 1 {
+                    CountriesView(gr: gr)
+                }
                 
+                if self.selection == 2 {
+                    SearchView(gr: gr)
+                }
                 
-                CustomTabBar(gr: gr).offset(y: gr.size.height*0.018)
-            }.edgesIgnoringSafeArea(.bottom)
+                CustomTabBar(gr: gr, selection: self.$selection).offset(y: gr.size.height*0.018)
+            }
+            
         }//geo reader
     }
     
-    func countryFlag(countryCode: String) -> String {
-      let base = 127397
-      var tempScalarView = String.UnicodeScalarView()
-      for i in countryCode.utf16 {
-        if let scalar = UnicodeScalar(base + Int(i)) {
-          tempScalarView.append(scalar)
-        }
-      }
-      return String(tempScalarView)
-    }
+    
     
 }
 
@@ -96,3 +64,60 @@ struct SubHeader: View {
     }
 }
 
+
+struct MainView: View {
+    
+    var gr: GeometryProxy
+    
+    let styles = [
+        ChartStyle(backgroundColor:Color(red: 52/255, green: 138/255, blue: 123/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
+        ChartStyle(backgroundColor:Color(red: 255/255, green: 131/255, blue: 104/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
+        ChartStyle(backgroundColor: Color(red: 255/255, green: 211/255, blue: 98/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear)
+    ]
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            HomeViewBanner(gr: gr).padding(.leading)
+            
+            InfoSection(gr: gr)
+            
+            Spacer()
+            
+            VStack(spacing: 0) {
+                SubHeader(gr: gr)
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
+                            .scaleEffect(gr.size.width*0.0018)
+                        
+                        
+                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
+                            .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
+                            .scaleEffect(gr.size.width*0.0018)
+                        
+                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
+                            .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
+                            .scaleEffect(gr.size.width*0.0018)
+                        
+                        
+                    }
+                    
+                }
+            }
+            
+        }.edgesIgnoringSafeArea(.bottom)
+    }
+    
+    func countryFlag(countryCode: String) -> String {
+      let base = 127397
+      var tempScalarView = String.UnicodeScalarView()
+      for i in countryCode.utf16 {
+        if let scalar = UnicodeScalar(base + Int(i)) {
+          tempScalarView.append(scalar)
+        }
+      }
+      return String(tempScalarView)
+    }
+}

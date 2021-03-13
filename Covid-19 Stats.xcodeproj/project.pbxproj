@@ -21,6 +21,8 @@
 		9284E73B25FAC9D8003E10AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9284E73A25FAC9D8003E10AD /* Assets.xcassets */; };
 		9284E73E25FAC9D8003E10AD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9284E73D25FAC9D8003E10AD /* Preview Assets.xcassets */; };
 		9284E74125FAC9D8003E10AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9284E73F25FAC9D8003E10AD /* LaunchScreen.storyboard */; };
+		92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEF825FCC89C000AF603 /* CountriesView.swift */; };
+		92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEFA25FCC8AA000AF603 /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		9284E73D25FAC9D8003E10AD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9284E74025FAC9D8003E10AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9284E74225FAC9D8003E10AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92D7CEF825FCC89C000AF603 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
+		92D7CEFA25FCC8AA000AF603 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		94B2AE84CDE03C4175CE3D00 /* Pods-Covid-19 Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.debug.xcconfig"; sourceTree = "<group>"; };
 		D28769C553EFBF248A6335A5 /* Pods-Covid-19 Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.release.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.release.xcconfig"; sourceTree = "<group>"; };
 		F5432198E8D85537AA20C2F7 /* Pods_Covid_19_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				9284E73825FAC9D6003E10AD /* HomeView.swift */,
+				92D7CEF825FCC89C000AF603 /* CountriesView.swift */,
+				92D7CEFA25FCC8AA000AF603 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +271,8 @@
 				924AB39625FC1F32005E2003 /* PrecautionSection.swift in Sources */,
 				924AB39125FC1ECA005E2003 /* InfoSection.swift in Sources */,
 				9284E73925FAC9D6003E10AD /* HomeView.swift in Sources */,
+				92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */,
+				92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

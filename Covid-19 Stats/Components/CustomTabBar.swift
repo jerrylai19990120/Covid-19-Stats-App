@@ -15,7 +15,7 @@ struct CustomTabBar: View {
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
-    @State var selection = 0
+    @Binding var selection: Int
     @State var offset:CGFloat = 0
     
     var body: some View {
@@ -108,7 +108,7 @@ struct CustomTabBar: View {
 struct CustomTabBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            CustomTabBar(gr: gr)
+            CustomTabBar(gr: gr, selection: .constant(0))
         }
     }
 }
