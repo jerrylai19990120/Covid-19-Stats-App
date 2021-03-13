@@ -112,6 +112,7 @@ struct PrecautionSection: View {
                 .frame(width: gr.size.width*0.2, height: gr.size.width*0.2)
             
         }.padding([.top, .leading, .trailing])
+            .frame(height: gr.size.height*0.23)
     }
 }
 

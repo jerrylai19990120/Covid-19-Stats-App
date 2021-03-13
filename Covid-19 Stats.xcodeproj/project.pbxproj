@@ -23,6 +23,7 @@
 		9284E74125FAC9D8003E10AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9284E73F25FAC9D8003E10AD /* LaunchScreen.storyboard */; };
 		92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEF825FCC89C000AF603 /* CountriesView.swift */; };
 		92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEFA25FCC8AA000AF603 /* SearchView.swift */; };
+		92D7CEFE25FD2BBB000AF603 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEFD25FD2BBB000AF603 /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		9284E74225FAC9D8003E10AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92D7CEF825FCC89C000AF603 /* CountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesView.swift; sourceTree = "<group>"; };
 		92D7CEFA25FCC8AA000AF603 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		92D7CEFD25FD2BBB000AF603 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		94B2AE84CDE03C4175CE3D00 /* Pods-Covid-19 Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.debug.xcconfig"; sourceTree = "<group>"; };
 		D28769C553EFBF248A6335A5 /* Pods-Covid-19 Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.release.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.release.xcconfig"; sourceTree = "<group>"; };
 		F5432198E8D85537AA20C2F7 /* Pods_Covid_19_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 		9284E73325FAC9D6003E10AD /* Covid-19 Stats */ = {
 			isa = PBXGroup;
 			children = (
+				92D7CEFC25FD2BA1000AF603 /* Models */,
 				921A972C25FAD20400B1B425 /* Components */,
 				9284E74825FACA70003E10AD /* Views */,
 				9284E73425FAC9D6003E10AD /* AppDelegate.swift */,
@@ -122,6 +125,14 @@
 				92D7CEFA25FCC8AA000AF603 /* SearchView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		92D7CEFC25FD2BA1000AF603 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				92D7CEFD25FD2BBB000AF603 /* Country.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9790A190C33F054B623F6DD9 /* Pods */ = {
@@ -266,6 +277,7 @@
 				9284E73525FAC9D6003E10AD /* AppDelegate.swift in Sources */,
 				921A973325FAE46D00B1B425 /* CustomTabBar.swift in Sources */,
 				924AB39425FC1F26005E2003 /* VacinationSection.swift in Sources */,
+				92D7CEFE25FD2BBB000AF603 /* Country.swift in Sources */,
 				921A972E25FAD22600B1B425 /* HomeViewBanner.swift in Sources */,
 				9284E73725FAC9D6003E10AD /* SceneDelegate.swift in Sources */,
 				924AB39625FC1F32005E2003 /* PrecautionSection.swift in Sources */,
