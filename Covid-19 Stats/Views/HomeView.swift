@@ -20,10 +20,8 @@ struct HomeView: View {
     var body: some View {
         GeometryReader { gr in
             VStack(spacing: 0) {
-                
-                HomeViewBanner(gr: gr).padding(.leading)
-                
                 Spacer()
+                HomeViewBanner(gr: gr).padding(.leading)
                 
                 InfoSection(gr: gr)
                 
@@ -35,16 +33,16 @@ struct HomeView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(0.75)
+                                .scaleEffect(gr.size.width*0.0018)
                                 
                             
                             LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
                                 .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(0.75)
+                                .scaleEffect(gr.size.width*0.0018)
                             
                             LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small)
                                 .frame(width: gr.size.width*0.4, height: gr.size.height*0.23)
-                                .scaleEffect(0.75)
+                                .scaleEffect(gr.size.width*0.0018)
                             
                             
                         }
