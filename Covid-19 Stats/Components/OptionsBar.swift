@@ -16,7 +16,7 @@ struct OptionsBar: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
-    @State var selection = 0
+    @Binding var selection: Int
     
     @State var offset: CGFloat = 0
     
@@ -27,7 +27,7 @@ struct OptionsBar: View {
             RoundedRectangle(cornerRadius: 10)
             .fill(tabColor)
             .frame(width: gr.size.width/3.3, height: gr.size.height*0.18/3)
-                .offset(x: -gr.size.width/3.7+offset)
+                .offset(x: -gr.size.width/3.5+offset)
             
             HStack {
                 Spacer()
@@ -35,7 +35,7 @@ struct OptionsBar: View {
                     self.selection = 0
                     self.offset = 0
                 }) {
-                    Text("Active Cases")
+                    Text("Today's Cases")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==0 ? fontColor: tabColor)
                 }
@@ -44,9 +44,9 @@ struct OptionsBar: View {
                 
                 Button(action: {
                     self.selection = 1
-                    self.offset = self.gr.size.width/3.4
+                    self.offset = self.gr.size.width/3.28
                 }) {
-                    Text("Dead")
+                    Text("Vacination")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==1 ? fontColor: tabColor)
                 }
@@ -56,9 +56,9 @@ struct OptionsBar: View {
                 
                 Button(action: {
                     self.selection = 2
-                    self.offset = self.gr.size.width/3.6 * 2
+                    self.offset = self.gr.size.width/3.38 * 2
                 }) {
-                    Text("Recovered")
+                    Text("Precautions")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==2 ? fontColor: tabColor)
                 }
@@ -75,7 +75,7 @@ struct OptionsBar: View {
 struct OptionsBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            OptionsBar(gr: gr)
+            OptionsBar(gr: gr, selection: .constant(0))
         }
     }
 }
