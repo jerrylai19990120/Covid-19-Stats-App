@@ -16,6 +16,7 @@ struct HomeViewBanner: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     
     var body: some View {
+        
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 //first banner

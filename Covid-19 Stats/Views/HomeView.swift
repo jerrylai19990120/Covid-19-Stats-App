@@ -14,29 +14,39 @@ struct HomeView: View {
     @State var selection = 0
     
     var body: some View {
-        GeometryReader { gr in
-            
-            ZStack {
-                if self.selection == 0 {
-                    MainView(gr: gr)
-                }
+        NavigationView {
+            GeometryReader { gr in
                 
-                if self.selection == 1 {
-                    CountriesView(gr: gr)
+                ZStack {
+                    if self.selection == 0 {
+                        MainView(gr: gr)
+                            .offset(y: -gr.size.height*0.14)
+                            .frame(height: gr.size.height*1.14)
+                    }
+                    
+                    if self.selection == 1 {
+                        CountriesView(gr: gr)
+                            .offset(y: -gr.size.height*0.14)
+                    }
+                    
+                    if self.selection == 2 {
+                        SearchView(gr: gr)
+                            .offset(y: -gr.size.height*0.14)
+                    }
+                    VStack {
+                        Spacer()
+                        CustomTabBar(gr: gr, selection: self.$selection).offset(y: gr.size.height*0.06)
+                    }.frame(height: gr.size.height)
+                    
+                    
                 }
+                //zstack
                 
-                if self.selection == 2 {
-                    SearchView(gr: gr)
-                }
-                VStack {
-                    Spacer()
-                    CustomTabBar(gr: gr, selection: self.$selection).offset(y: gr.size.height*0.06)
-                }
-                
-                
-            }//zstack
-            
-        }//geo reader
+            }//geo reader
+        }.navigationBarTitle("")
+        .navigationBarHidden(true)
+        .accentColor(.white)
+        
     }
     
     
@@ -49,29 +59,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-
-struct MainView: View {
-    
-    var gr: GeometryProxy
-    
-    var body: some View {
-        
-        
-            VStack(spacing: 0) {
-                
-                HomeViewBanner(gr: gr).padding(.leading)
-                
-                InfoSection(gr: gr)
-                
-                TopCountriesList(gr: gr)
-                
-            }.padding(.bottom, gr.size.height*0.13)
-            .frame(height: gr.size.height)
-            
-        
-       
-    }
-    
-
-}
 

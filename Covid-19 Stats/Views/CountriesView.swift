@@ -136,8 +136,8 @@ struct CountriesView: View {
                             
                         }
                     }
-                }.padding(.bottom, gr.size.width*0.1)
-            }.padding(.bottom, gr.size.width*0.1)
+                }
+            }
             
             Spacer()
         }.frame(height: gr.size.height)

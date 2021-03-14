@@ -32,7 +32,7 @@ struct InfoSection: View {
                 PrecautionSection(gr: gr)
                     .opacity(selection==2 ? 1 : 0)
             }
-            Spacer()
+            
             OptionsBar(gr: gr, selection: $selection)
         }.animation(.default)
     }

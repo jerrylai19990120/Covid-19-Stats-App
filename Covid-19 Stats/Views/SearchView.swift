@@ -211,12 +211,12 @@ struct SearchView: View {
                         
                         PharmacyView(gr: gr).padding(.bottom)
                         
-                    }.padding(.bottom, gr.size.height*0.1)
+                    }.padding(.top)
                 }
                 
                 
                 
-            }.padding()
+            }.padding([.top, .leading, .trailing])
             
             
         }.frame(height: gr.size.height)

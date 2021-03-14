@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct DetailView: View {
     
@@ -31,13 +32,16 @@ struct DetailView: View {
                     
                     VStack(alignment: .center) {
                         HStack {
-                            Image(systemName: "chevron.left")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
-                                .padding()
-                                .foregroundColor(tabColor)
-                                .overlay(RoundedRectangle(cornerRadius: 10).stroke(tabColor, lineWidth: 2))
+                            NavigationLink(destination: HomeView().navigationBarTitle("").navigationBarHidden(true)) {
+                                Image(systemName: "chevron.left")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
+                                    .padding()
+                                    .foregroundColor(tabColor)
+                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(tabColor, lineWidth: 2))
+                            }
+                            
                             
                             Spacer()
                             
@@ -60,9 +64,9 @@ struct DetailView: View {
                     }
                     Spacer()
                 }
-            }
+            }.offset(y: gr.size.height*0.05)
             
-        }//.edgesIgnoringSafeArea([.top, .bottom])
+        }.edgesIgnoringSafeArea([.top, .bottom])
         .onAppear {
                 self.popup = true
         }
@@ -103,7 +107,17 @@ struct DetailData: View {
             RoundedRectangle(cornerRadius: 30)
                 .fill(Color.white)
             
+            VStack {
+                VStack {
+                    LineView(data: [8,23,54,32,12,37,7,23,43], title: "Total Cases").padding()
+                }.frame(height: gr.size.height*0.5)
+                    .scaleEffect(gr.size.width*0.0024)
+                
+                TopCountriesList(gr: gr)
+            }.offset(y: popup ? -gr.size.height*0.21 : gr.size.height+88)
             
-        }.offset(y: popup ? gr.size.height*0.23 : gr.size.height*1.2)
+            
+        }.offset(y: popup ? gr.size.height*0.23 : gr.size.height+88)
+            .animation(.default)
     }
 }
