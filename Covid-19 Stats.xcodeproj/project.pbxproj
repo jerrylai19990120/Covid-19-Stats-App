@@ -26,6 +26,7 @@
 		92D7CEFE25FD2BBB000AF603 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEFD25FD2BBB000AF603 /* Country.swift */; };
 		92D7CF0025FD842F000AF603 /* PharmacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CEFF25FD842F000AF603 /* PharmacyView.swift */; };
 		92D7CF0225FDBF17000AF603 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF0125FDBF17000AF603 /* DetailView.swift */; };
+		92D7CF0425FE5E53000AF603 /* TopCountriesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF0325FE5E53000AF603 /* TopCountriesList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		92D7CEFD25FD2BBB000AF603 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		92D7CEFF25FD842F000AF603 /* PharmacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyView.swift; sourceTree = "<group>"; };
 		92D7CF0125FDBF17000AF603 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		92D7CF0325FE5E53000AF603 /* TopCountriesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCountriesList.swift; sourceTree = "<group>"; };
 		94B2AE84CDE03C4175CE3D00 /* Pods-Covid-19 Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.debug.xcconfig"; sourceTree = "<group>"; };
 		D28769C553EFBF248A6335A5 /* Pods-Covid-19 Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.release.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.release.xcconfig"; sourceTree = "<group>"; };
 		F5432198E8D85537AA20C2F7 /* Pods_Covid_19_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 				924AB39325FC1F26005E2003 /* VacinationSection.swift */,
 				924AB39525FC1F32005E2003 /* PrecautionSection.swift */,
 				92D7CEFF25FD842F000AF603 /* PharmacyView.swift */,
+				92D7CF0325FE5E53000AF603 /* TopCountriesList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 				924AB39625FC1F32005E2003 /* PrecautionSection.swift in Sources */,
 				92D7CF0025FD842F000AF603 /* PharmacyView.swift in Sources */,
 				924AB39125FC1ECA005E2003 /* InfoSection.swift in Sources */,
+				92D7CF0425FE5E53000AF603 /* TopCountriesList.swift in Sources */,
 				9284E73925FAC9D6003E10AD /* HomeView.swift in Sources */,
 				92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */,
 				92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */,
