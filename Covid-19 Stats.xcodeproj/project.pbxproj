@@ -33,6 +33,11 @@
 		92D7CF0E25FE7B69000AF603 /* AllCountriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF0D25FE7B69000AF603 /* AllCountriesView.swift */; };
 		92D7CF1025FE7C4A000AF603 /* CountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF0F25FE7C4A000AF603 /* CountryView.swift */; };
 		92D7CF1225FEC041000AF603 /* BackBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1125FEC041000AF603 /* BackBtn.swift */; };
+		92D7CF1425FECC04000AF603 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1325FECC04000AF603 /* MapView.swift */; };
+		92D7CF1625FECD15000AF603 /* MapUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1525FECD15000AF603 /* MapUIView.swift */; };
+		92D7CF1825FECE50000AF603 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1725FECE50000AF603 /* LocationManager.swift */; };
+		92D7CF1A25FED236000AF603 /* Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1925FED236000AF603 /* Pharmacy.swift */; };
+		92D7CF1C25FED2E3000AF603 /* PharmacyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +67,11 @@
 		92D7CF0D25FE7B69000AF603 /* AllCountriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesView.swift; sourceTree = "<group>"; };
 		92D7CF0F25FE7C4A000AF603 /* CountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryView.swift; sourceTree = "<group>"; };
 		92D7CF1125FEC041000AF603 /* BackBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackBtn.swift; sourceTree = "<group>"; };
+		92D7CF1325FECC04000AF603 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		92D7CF1525FECD15000AF603 /* MapUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapUIView.swift; sourceTree = "<group>"; };
+		92D7CF1725FECE50000AF603 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		92D7CF1925FED236000AF603 /* Pharmacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pharmacy.swift; sourceTree = "<group>"; };
+		92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyAnnotation.swift; sourceTree = "<group>"; };
 		94B2AE84CDE03C4175CE3D00 /* Pods-Covid-19 Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.debug.xcconfig"; sourceTree = "<group>"; };
 		D28769C553EFBF248A6335A5 /* Pods-Covid-19 Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.release.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.release.xcconfig"; sourceTree = "<group>"; };
 		F5432198E8D85537AA20C2F7 /* Pods_Covid_19_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +160,8 @@
 				92D7CF0625FE6BCB000AF603 /* MainView.swift */,
 				92D7CF0B25FE7895000AF603 /* ResultView.swift */,
 				92D7CF0D25FE7B69000AF603 /* AllCountriesView.swift */,
+				92D7CF1325FECC04000AF603 /* MapView.swift */,
+				92D7CF1525FECD15000AF603 /* MapUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +170,8 @@
 			isa = PBXGroup;
 			children = (
 				92D7CEFD25FD2BBB000AF603 /* Country.swift */,
+				92D7CF1925FED236000AF603 /* Pharmacy.swift */,
+				92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				92D7CF0925FE77A2000AF603 /* DataService.swift */,
+				92D7CF1725FECE50000AF603 /* LocationManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -311,12 +326,15 @@
 				92D7CF0E25FE7B69000AF603 /* AllCountriesView.swift in Sources */,
 				924AB38F25FC0EA4005E2003 /* OptionsBar.swift in Sources */,
 				9284E73525FAC9D6003E10AD /* AppDelegate.swift in Sources */,
+				92D7CF1425FECC04000AF603 /* MapView.swift in Sources */,
+				92D7CF1625FECD15000AF603 /* MapUIView.swift in Sources */,
 				921A973325FAE46D00B1B425 /* CustomTabBar.swift in Sources */,
 				92D7CF0225FDBF17000AF603 /* DetailView.swift in Sources */,
 				92D7CF1225FEC041000AF603 /* BackBtn.swift in Sources */,
 				924AB39425FC1F26005E2003 /* VacinationSection.swift in Sources */,
 				92D7CEFE25FD2BBB000AF603 /* Country.swift in Sources */,
 				921A972E25FAD22600B1B425 /* HomeViewBanner.swift in Sources */,
+				92D7CF1A25FED236000AF603 /* Pharmacy.swift in Sources */,
 				9284E73725FAC9D6003E10AD /* SceneDelegate.swift in Sources */,
 				924AB39625FC1F32005E2003 /* PrecautionSection.swift in Sources */,
 				92D7CF0725FE6BCB000AF603 /* MainView.swift in Sources */,
@@ -324,8 +342,10 @@
 				92D7CF0C25FE7895000AF603 /* ResultView.swift in Sources */,
 				924AB39125FC1ECA005E2003 /* InfoSection.swift in Sources */,
 				92D7CF0425FE5E53000AF603 /* TopCountriesList.swift in Sources */,
+				92D7CF1C25FED2E3000AF603 /* PharmacyAnnotation.swift in Sources */,
 				92D7CF1025FE7C4A000AF603 /* CountryView.swift in Sources */,
 				9284E73925FAC9D6003E10AD /* HomeView.swift in Sources */,
+				92D7CF1825FECE50000AF603 /* LocationManager.swift in Sources */,
 				92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */,
 				92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */,
 				92D7CF0A25FE77A2000AF603 /* DataService.swift in Sources */,

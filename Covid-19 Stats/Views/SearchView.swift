@@ -18,6 +18,8 @@ struct SearchView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
+    
+    
     var body: some View {
         VStack {
             HStack {
@@ -183,6 +185,7 @@ struct SearchView: View {
                                         .resizable()
                                         .frame(width: gr.size.width*0.18, height: gr.size.width*0.18)
                                 }
+                                
                             }.clipped()
                             .cornerRadius(20)
                             .contextMenu {
@@ -203,22 +206,26 @@ struct SearchView: View {
                             .font(.system(size: gr.size.width*0.06, weight: .medium, design: .rounded))
                         Spacer()
                         
-                        HStack(spacing: 2) {
-                            Text("map")
-                                .foregroundColor(fontColor)
-                                .font(.system(size: gr.size.width*0.05, weight: .medium, design: .rounded))
-                            
-                            Image(systemName: "chevron.right")
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .foregroundColor(fontColor)
-                                .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
-                            
+                        NavigationLink(destination: MapUIView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
+                            HStack(spacing: 2) {
+                                Text("map")
+                                    .foregroundColor(fontColor)
+                                    .font(.system(size: gr.size.width*0.05, weight: .medium, design: .rounded))
+                                
+                                Image(systemName: "chevron.right")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(fontColor)
+                                    .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
+                                
+                            }
                         }
+                        
                     }
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
+                            
                             PharmacyView(gr: gr).padding(.bottom)
                             
                             PharmacyView(gr: gr).padding(.bottom)
