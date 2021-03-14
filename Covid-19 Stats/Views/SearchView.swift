@@ -53,18 +53,128 @@ struct SearchView: View {
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(bgColor)
-                            .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                    HStack(spacing: gr.size.width*0.07) {
                         
-                        RoundedRectangle(cornerRadius: 10)
-                        .fill(bgColor)
-                        .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color(red: 246/255, green: 200/255, blue: 56/255))
+                                .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.2, height: gr.size.width*0.2)
+                                .offset(x:gr.size.width*0.1, y: -gr.size.width*0.14)
+                                .opacity(0.28)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.16, height: gr.size.width*0.16)
+                                .offset(x:gr.size.width*0.18, y: -gr.size.width*0.05)
+                                .opacity(0.28)
+                                
+                            
+                            VStack {
+                                Text("Wear a mask")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: gr.size.width*0.038, weight: .semibold, design: .rounded))
+                                
+                                Image("mask")
+                                    .resizable()
+                                    .frame(width: gr.size.width*0.18, height: gr.size.width*0.18)
+                            }
+                        }.clipped()
+                        .cornerRadius(20)
                         
-                        RoundedRectangle(cornerRadius: 10)
-                        .fill(bgColor)
-                        .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 76/255, green: 91/255, blue: 236/255))
+                                .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.2, height: gr.size.width*0.2)
+                                .offset(x:gr.size.width*0.1, y: -gr.size.width*0.14)
+                                .opacity(0.28)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.16, height: gr.size.width*0.16)
+                                .offset(x:gr.size.width*0.18, y: -gr.size.width*0.05)
+                                .opacity(0.28)
+                                
+                            
+                            VStack {
+                                Text("Use hand sanitizer")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: gr.size.width*0.038, weight: .semibold, design: .rounded))
+                                
+                                Image("handsanitizer")
+                                    .resizable()
+                                    .frame(width: gr.size.width*0.18, height: gr.size.width*0.18)
+                            }
+                        }.clipped()
+                        .cornerRadius(20)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 251/255, green: 114/255, blue: 65/255))
+                                .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.2, height: gr.size.width*0.2)
+                                .offset(x:gr.size.width*0.1, y: -gr.size.width*0.14)
+                                .opacity(0.28)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.16, height: gr.size.width*0.16)
+                                .offset(x:gr.size.width*0.18, y: -gr.size.width*0.05)
+                                .opacity(0.28)
+                            
+                            VStack {
+                                Text("Social distancing")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: gr.size.width*0.038, weight: .semibold, design: .rounded))
+                                
+                                Image("socialdistance")
+                                    .resizable()
+                                    .frame(width: gr.size.width*0.18, height: gr.size.width*0.18)
+                            }
+                        }.clipped()
+                        .cornerRadius(20)
+                        
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(red: 246/255, green: 200/255, blue: 56/255))
+                                .frame(width: gr.size.width*0.38, height: gr.size.width*0.38)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.2, height: gr.size.width*0.2)
+                                .offset(x:gr.size.width*0.1, y: -gr.size.width*0.14)
+                                .opacity(0.28)
+                            
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: gr.size.width*0.16, height: gr.size.width*0.16)
+                                .offset(x:gr.size.width*0.18, y: -gr.size.width*0.05)
+                                .opacity(0.28)
+                                
+                            
+                            
+                            VStack {
+                                Text("Wash your hands")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: gr.size.width*0.038, weight: .semibold, design: .rounded))
+                                
+                                Image("washhands")
+                                    .resizable()
+                                    .frame(width: gr.size.width*0.18, height: gr.size.width*0.18)
+                            }
+                        }.clipped()
+                        .cornerRadius(20)
+                        
                         
                     }
                 }

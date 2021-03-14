@@ -15,6 +15,7 @@ struct HomeView: View {
     
     var body: some View {
         GeometryReader { gr in
+            
             ZStack {
                 if self.selection == 0 {
                     MainView(gr: gr)
@@ -33,7 +34,7 @@ struct HomeView: View {
                 }
                 
                 
-            }
+            }//zstack
             
         }//geo reader
     }
