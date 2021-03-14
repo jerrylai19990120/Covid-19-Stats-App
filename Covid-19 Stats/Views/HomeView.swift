@@ -114,6 +114,7 @@ struct MainView: View {
                 }
                 
             }.padding(.bottom, gr.size.height*0.13)
+            .frame(height: gr.size.height)
             
         
        
