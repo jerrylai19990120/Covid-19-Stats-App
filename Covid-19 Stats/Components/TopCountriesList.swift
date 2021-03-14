@@ -85,9 +85,12 @@ struct SubHeader: View {
                 .font(.system(size: gr.size.width*0.06, weight: .bold, design: .rounded))
                 .foregroundColor(self.fontColor)
             Spacer()
-            Text("View All")
-                .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .rounded))
-                .foregroundColor(self.fontColor)
+            NavigationLink(destination: AllCountriesView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
+                Text("View All")
+                    .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .rounded))
+                    .foregroundColor(self.fontColor)
+            }
+            
         }.padding()
     }
 }
