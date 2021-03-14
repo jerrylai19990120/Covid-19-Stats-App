@@ -23,7 +23,7 @@ struct MainView: View {
                     
                 TopCountriesList(gr: gr)
                 
-            }//.frame(height: gr.size.height)
+            }.frame(height: gr.size.height)
 
        
     }

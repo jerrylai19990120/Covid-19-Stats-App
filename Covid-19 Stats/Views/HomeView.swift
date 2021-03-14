@@ -21,7 +21,6 @@ struct HomeView: View {
                     if self.selection == 0 {
                         MainView(gr: gr)
                             .offset(y: -gr.size.height*0.14)
-                            .frame(height: gr.size.height*1.14)
                     }
                     
                     if self.selection == 1 {
