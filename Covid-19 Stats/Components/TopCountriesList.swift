@@ -13,13 +13,13 @@ struct TopCountriesList: View {
     
     var gr: GeometryProxy
     
+    @Binding var topCountries: [Country]
+    
     let styles = [
         ChartStyle(backgroundColor:Color(red: 52/255, green: 138/255, blue: 123/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
         ChartStyle(backgroundColor:Color(red: 255/255, green: 131/255, blue: 104/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
         ChartStyle(backgroundColor: Color(red: 255/255, green: 211/255, blue: 98/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear)
     ]
-    
-    @State var topCountries = [Country]()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -27,22 +27,19 @@ struct TopCountriesList: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {
-                    NavigationLink(destination: DetailView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
-                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.24)
-                            .scaleEffect(gr.size.width*0.00169)
+                    
+                    ForEach(self.topCountries, id: \.self){
+                        i in
+                        NavigationLink(destination: DetailView(gr: self.gr).navigationBarTitle("").navigationBarHidden(true)) {
+                            LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
+                                .scaleEffect(self.gr.size.width*0.00169)
+                        }
                     }
                     
                     
                     
-                    NavigationLink(destination: DetailView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
-                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.24)
-                            .scaleEffect(gr.size.width*0.00169)
-                    }
                     
-                    NavigationLink(destination: DetailView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
-                        LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: "US")) USA", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: gr.size.width*0.4, height: gr.size.height*0.24)
-                            .scaleEffect(gr.size.width*0.00169)
-                    }
+                    
                     
                     
                 }
@@ -70,7 +67,7 @@ struct TopCountriesList: View {
 struct TopCountriesList_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            TopCountriesList(gr: gr)
+            TopCountriesList(gr: gr, topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
         }
     }
 }

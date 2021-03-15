@@ -13,19 +13,23 @@ struct HomeView: View {
     
     @State var selection = 0
     
+    @State var countries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
+    
+    @State var topCountries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
+    
     var body: some View {
         NavigationView {
             GeometryReader { gr in
                 
                 ZStack {
                     if self.selection == 0 {
-                        MainView(gr: gr)
+                        MainView(gr: gr, topCountries: self.$topCountries)
                             .offset(y: -gr.size.height*0.14)
                             
                     }
                     
                     if self.selection == 1 {
-                        CountriesView(gr: gr)
+                        CountriesView(gr: gr, countries: self.$countries)
                             .offset(y: -gr.size.height*0.14)
                     }
                     
@@ -39,6 +43,15 @@ struct HomeView: View {
                     }.frame(height: gr.size.height)
                     
                     
+                }.onAppear {
+                    DataService.instance.getAllCountries { (success) in
+                        if success {
+                            self.countries = DataService.instance.countries
+                            self.topCountries = DataService.instance.topCountries.sorted(by: {
+                                $0.totalInfected > $1.totalInfected
+                            })
+                        }
+                    }
                 }
                 //zstack
                 

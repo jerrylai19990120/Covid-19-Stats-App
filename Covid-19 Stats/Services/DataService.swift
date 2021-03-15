@@ -101,11 +101,6 @@ class DataService {
         }
     }
     
-    func getTopCountries(completion: @escaping (_ status:Bool)->()){
-        
-        
-    }
-    
     func getAllCountries(completion: @escaping (_ status:Bool)->()){
         
         if self.countries.count != 0 {
@@ -146,7 +141,7 @@ class DataService {
                     
                         
                     }
-                    
+                    self.topCountries = [] + self.countries[0...9]
                     completion(true)
                     
                     

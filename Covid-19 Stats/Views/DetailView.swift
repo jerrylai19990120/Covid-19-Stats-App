@@ -113,7 +113,7 @@ struct DetailData: View {
                 }.frame(height: gr.size.height*0.5)
                     .scaleEffect(gr.size.width*0.0024)
                 
-                TopCountriesList(gr: gr)
+                TopCountriesList(gr: gr, topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
             }.offset(y: popup ? -gr.size.height*0.21 : gr.size.height+88)
             
             

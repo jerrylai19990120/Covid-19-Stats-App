@@ -26,7 +26,7 @@ struct CountriesView: View {
     
     @State var scale: CGFloat = 1
     
-    @State var countries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
+    @Binding var countries: [Country]
     
     
     var body: some View {
@@ -130,13 +130,7 @@ struct CountriesView: View {
             
             Spacer()
         }.frame(height: gr.size.height)
-        .onAppear {
-            DataService.instance.getAllCountries { (success) in
-                if success {
-                    self.countries = DataService.instance.countries
-                }
-            }
-        }
+        
     }
     
     func countryFlag(countryCode: String) -> String {
@@ -155,7 +149,7 @@ struct CountriesView: View {
 struct CountriesView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            CountriesView(gr: gr)
+            CountriesView(gr: gr, countries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
         }
         
     }
