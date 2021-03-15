@@ -38,6 +38,7 @@
 		92D7CF1825FECE50000AF603 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1725FECE50000AF603 /* LocationManager.swift */; };
 		92D7CF1A25FED236000AF603 /* Pharmacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1925FED236000AF603 /* Pharmacy.swift */; };
 		92D7CF1C25FED2E3000AF603 /* PharmacyAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */; };
+		92D7CF1F26000445000AF603 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D7CF1E26000445000AF603 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		92D7CF1725FECE50000AF603 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		92D7CF1925FED236000AF603 /* Pharmacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pharmacy.swift; sourceTree = "<group>"; };
 		92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PharmacyAnnotation.swift; sourceTree = "<group>"; };
+		92D7CF1E26000445000AF603 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		94B2AE84CDE03C4175CE3D00 /* Pods-Covid-19 Stats.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.debug.xcconfig"; sourceTree = "<group>"; };
 		D28769C553EFBF248A6335A5 /* Pods-Covid-19 Stats.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19 Stats.release.xcconfig"; path = "Target Support Files/Pods-Covid-19 Stats/Pods-Covid-19 Stats.release.xcconfig"; sourceTree = "<group>"; };
 		F5432198E8D85537AA20C2F7 /* Pods_Covid_19_Stats.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Stats.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +130,7 @@
 		9284E73325FAC9D6003E10AD /* Covid-19 Stats */ = {
 			isa = PBXGroup;
 			children = (
+				92D7CF1D26000433000AF603 /* Utilities */,
 				92D7CF0825FE7790000AF603 /* Services */,
 				92D7CEFC25FD2BA1000AF603 /* Models */,
 				921A972C25FAD20400B1B425 /* Components */,
@@ -183,6 +186,14 @@
 				92D7CF1725FECE50000AF603 /* LocationManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		92D7CF1D26000433000AF603 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				92D7CF1E26000445000AF603 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		9790A190C33F054B623F6DD9 /* Pods */ = {
@@ -349,6 +360,7 @@
 				92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */,
 				92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */,
 				92D7CF0A25FE77A2000AF603 /* DataService.swift in Sources */,
+				92D7CF1F26000445000AF603 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

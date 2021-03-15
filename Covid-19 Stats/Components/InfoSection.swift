@@ -59,14 +59,26 @@ struct CasesSection: View {
     var recoveredColor = Color(red: 0/255, green: 191/255, blue: 165/255)
     var deathColor = Color(red: 255/255, green: 80/255, blue: 93/255)
     
+    @State var newActive = 0
+    @State var newRecovered = 0
+    @State var newDeath = 0
+    
+    var formatter = DateFormatter()
+    
+    
+    init(gr: GeometryProxy) {
+        self.gr = gr
+        formatter.dateFormat = "d MMM y"
+    }
+    
     var body: some View {
         VStack {
             HStack {
-                Text("Today's Statistics")
+                Text("Today's Statistics - World")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 
-                Text("11 March 2021")
+                Text("\(formatter.string(from: Date()))")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.tabColor)
                 Spacer()
@@ -88,11 +100,11 @@ struct CasesSection: View {
             }
             
             HStack {
-                Text("Active")
+                Text("New Active")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 Spacer()
-                Text("8590")
+                Text("\(self.newActive)")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 
@@ -103,11 +115,11 @@ struct CasesSection: View {
             }.padding([.leading, .trailing])
             
             HStack {
-                Text("Recovered")
+                Text("New Recovered")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 Spacer()
-                Text("18590")
+                Text("\(self.newRecovered)")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 
@@ -118,11 +130,11 @@ struct CasesSection: View {
             }.padding([.leading, .trailing])
             
             HStack {
-                Text("Dead")
+                Text("New Deaths")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 Spacer()
-                Text("432")
+                Text("\(self.newDeath)")
                     .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)
                 
@@ -134,5 +146,14 @@ struct CasesSection: View {
             
             
         }.frame(width: gr.size.width)
+            .onAppear {
+                DataService.instance.getTodayStat { (success) in
+                    if success {
+                        self.newActive = DataService.instance.newActive
+                        self.newRecovered = DataService.instance.newRecovered
+                        self.newDeath = DataService.instance.newDeath
+                    }
+                }
+        }
     }
 }

@@ -29,6 +29,14 @@ class Coordinator: NSObject, MKMapViewDelegate {
         }
     }
     
+    //use to render route from location to location
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .systemBlue
+        renderer.lineWidth = 5
+        return renderer
+    }
+    
 }
 
 struct MapView: UIViewRepresentable {
@@ -40,6 +48,7 @@ struct MapView: UIViewRepresentable {
         map.showsUserLocation = true
         map.tintColor = .blue
         map.delegate = context.coordinator
+        
         return map
     }
     
@@ -56,4 +65,6 @@ struct MapView: UIViewRepresentable {
         let annotations = self.pharmacies.map(PharmacyAnnotation.init)
         mapView.addAnnotations(annotations)
     }
+    
+    
 }

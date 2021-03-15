@@ -26,21 +26,7 @@ struct CountriesView: View {
     
     @State var scale: CGFloat = 1
     
-    @State var countries = [
-        Country(name: "USA", countryCode: "US", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Barbados", countryCode: "BB", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Gibraltar", countryCode: "GI", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Lithuania", countryCode: "LT", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "China", countryCode: "CN", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Canada", countryCode: "CA", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Qatar", countryCode: "QA", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "India", countryCode: "IN", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Canada", countryCode: "CA", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Qatar", countryCode: "QA", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "India", countryCode: "IN", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "Qatar", countryCode: "QA", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323),
-        Country(name: "India", countryCode: "IN", totalInfected: 1344442, active: 1323, recovered: 32323, deaths: 323)
-    ]
+    @State var countries = [Country]()
     
     var body: some View {
         
@@ -141,6 +127,14 @@ struct CountriesView: View {
             
             Spacer()
         }.frame(height: gr.size.height)
+        .onAppear {
+            DataService.instance.getAllCountries { (success) in
+                if success {
+                    self.countries = DataService.instance.countries
+                    
+                }
+            }
+        }
     }
     
     func countryFlag(countryCode: String) -> String {

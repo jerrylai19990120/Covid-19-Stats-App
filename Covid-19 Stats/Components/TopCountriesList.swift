@@ -19,6 +19,8 @@ struct TopCountriesList: View {
         ChartStyle(backgroundColor: Color(red: 255/255, green: 211/255, blue: 98/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear)
     ]
     
+    @State var topCountries = [Country]()
+    
     var body: some View {
         VStack(spacing: 0) {
             SubHeader(gr: gr)
@@ -46,6 +48,8 @@ struct TopCountriesList: View {
                 }
                 
             }
+        }.onAppear {
+            
         }
     }
     
@@ -92,5 +96,6 @@ struct SubHeader: View {
             }
             
         }.padding()
+        
     }
 }
