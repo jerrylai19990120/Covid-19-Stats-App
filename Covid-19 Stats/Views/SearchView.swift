@@ -18,7 +18,7 @@ struct SearchView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
-    
+    @State var pharmacies: [Pharmacy] = [Pharmacy]()
     
     var body: some View {
         VStack {
