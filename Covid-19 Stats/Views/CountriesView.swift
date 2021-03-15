@@ -26,7 +26,8 @@ struct CountriesView: View {
     
     @State var scale: CGFloat = 1
     
-    @State var countries = [Country]()
+    @State var countries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
+    
     
     var body: some View {
         
@@ -86,36 +87,38 @@ struct CountriesView: View {
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    ForEach(self.countries, id: \.self){ i in
+                    ForEach(self.countries.sorted(by: {
+                        self.selection==0 ? $0.totalInfected > $1.totalInfected : $0.totalInfected < $1.totalInfected
+                    }), id: \.self){ i in
                         HStack(spacing: 0) {
                             
                             Text("\(self.countryFlag(countryCode: "\(i.countryCode)")) \(i.name)")
                                 .foregroundColor(self.fontColor)
-                                .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .default))
+                                .font(.system(size: self.gr.size.width*0.03, weight: .medium, design: .default))
                                 .padding([.top, .bottom])
                                 .frame(width: self.gr.size.width*0.2)
                             
                             Text("\(i.totalInfected)")
                                 .foregroundColor(self.fontColor)
-                                .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .default))
+                                .font(.system(size: self.gr.size.width*0.03, weight: .medium, design: .default))
                                 .padding([.top, .bottom])
                                 .frame(width: self.gr.size.width*0.2)
                             
                             Text("\(i.recovered)")
                                 .foregroundColor(self.recoveredColor)
-                                .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .default))
+                                .font(.system(size: self.gr.size.width*0.03, weight: .medium, design: .default))
                                 .padding([.top, .bottom])
                                 .frame(width: self.gr.size.width*0.2)
                             
                             Text("\(i.active)")
                                 .foregroundColor(self.activeColor)
-                                .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .default))
+                                .font(.system(size: self.gr.size.width*0.03, weight: .medium, design: .default))
                                 .padding([.top, .bottom])
                                 .frame(width: self.gr.size.width*0.2)
                             
                             Text("\(i.deaths)")
                                 .foregroundColor(self.deathColor)
-                                .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .default))
+                                .font(.system(size: self.gr.size.width*0.03, weight: .medium, design: .default))
                                 .padding([.top, .bottom])
                                 .frame(width: self.gr.size.width*0.2)
                             
@@ -131,7 +134,6 @@ struct CountriesView: View {
             DataService.instance.getAllCountries { (success) in
                 if success {
                     self.countries = DataService.instance.countries
-                    
                 }
             }
         }
@@ -176,8 +178,8 @@ struct SubTabBar: View {
             
             RoundedRectangle(cornerRadius: 20)
                 .fill(tabColor)
-                .frame(width: gr.size.width/5*scale, height: gr.size.height*0.18/4)
-                .offset(x: -gr.size.width/2.62+offset)
+                .frame(width: gr.size.width/4*scale, height: gr.size.height*0.18/4)
+                .offset(x: -gr.size.width/2.96+offset)
             
             HStack {
                 
@@ -186,7 +188,7 @@ struct SubTabBar: View {
                     self.offset = 0
                     self.scale = 1
                 }) {
-                    Text("Today")
+                    Text("High to low")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==0 ? fontColor: tabColor)
                 }
@@ -195,10 +197,10 @@ struct SubTabBar: View {
                 
                 Button(action: {
                     self.selection = 1
-                    self.offset = self.gr.size.width/2.32
+                    self.offset = self.gr.size.width/2.26
                     self.scale = 1.3
                 }) {
-                    Text("Yesterday")
+                    Text("Low to high")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==1 ? fontColor: tabColor)
                 }

@@ -108,7 +108,10 @@ class DataService {
     
     func getAllCountries(completion: @escaping (_ status:Bool)->()){
         
-        self.countries = []
+        if self.countries.count != 0 {
+            completion(true)
+            return
+        }
         
         AF.request("\(BASE_URL)summary").responseJSON { (res) in
             if res.error == nil {
