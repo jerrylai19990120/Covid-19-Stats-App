@@ -18,6 +18,8 @@ class DataService {
     
     var pharmacies = [Pharmacy]()
     
+    @ObservedObject var locationManager = LocationManager()
+    
     func getNearByPharmacies(completion: @escaping (_ status:Bool)->()){
         
         let request = MKLocalSearch.Request()
@@ -29,7 +31,7 @@ class DataService {
                 let mapItems = res.mapItems
                 
                 self.pharmacies = mapItems.map({
-                    Pharmacy(placemark: $0.placemark)
+                    Pharmacy(locationManager: self.locationManager, placemark: $0.placemark)
                 })
                 completion(true)
             } else {

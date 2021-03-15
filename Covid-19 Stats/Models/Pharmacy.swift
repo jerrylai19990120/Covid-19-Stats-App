@@ -8,9 +8,11 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 struct Pharmacy: Hashable {
     
+    let locationManager: LocationManager
     let placemark: MKPlacemark
     
     var id: UUID {
@@ -27,6 +29,10 @@ struct Pharmacy: Hashable {
     
     var coordinate: CLLocationCoordinate2D {
         self.placemark.coordinate
+    }
+    
+    var distance: Double {
+        locationManager.location?.distance(from: CLLocation(latitude: self.placemark.coordinate.latitude, longitude: self.placemark.coordinate.longitude)) ?? 0
     }
     
 }

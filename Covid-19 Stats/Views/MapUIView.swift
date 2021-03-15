@@ -12,7 +12,7 @@ import MapKit
 struct MapUIView: View {
     
     var gr: GeometryProxy
-    @ObservedObject var locationManager = LocationManager()
+    
     @State var pharmacies: [Pharmacy] = [Pharmacy]()
     
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)

@@ -227,7 +227,7 @@ struct SearchView: View {
                         VStack {
                             ForEach(self.pharmacies, id: \.self){
                                 i in
-                                PharmacyView(gr: self.gr,title: i.name, addr: i.title, img: Int.random(in: 0...2)).padding(.bottom)
+                                PharmacyView(gr: self.gr,title: i.name, addr: i.title, distance: Int(i.distance*0.000621371),img: Int.random(in: 0...2)).padding(.bottom)
                             }
                             
                         }.padding(.top)
