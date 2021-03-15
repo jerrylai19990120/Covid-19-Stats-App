@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-struct Pharmacy {
+struct Pharmacy: Hashable {
     
     let placemark: MKPlacemark
     

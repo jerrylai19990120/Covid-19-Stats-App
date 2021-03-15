@@ -19,29 +19,16 @@ struct MapUIView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
-    private func getNearByPharmacies(){
-        
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "drug store"
-        
-        let search = MKLocalSearch(request: request)
-        search.start { (res, err) in
-            if let res = res {
-                let mapItems = res.mapItems
-                
-                self.pharmacies = mapItems.map({
-                    Pharmacy(placemark: $0.placemark)
-                })
-            }
-        }
-    }
-    
     var body: some View {
         ZStack(alignment: .top) {
             
             MapView(pharmacies: self.pharmacies)
                 .onTapGesture {
-                    self.getNearByPharmacies()
+                DataService.instance.getNearByPharmacies { (success) in
+                    if success {
+                        self.pharmacies = DataService.instance.pharmacies
+                    }
+                }
             }
             
             NavigationLink(destination: HomeView().navigationBarTitle("").navigationBarHidden(true)) {
@@ -58,7 +45,11 @@ struct MapUIView: View {
             }.padding(.top, gr.size.height*0.08)
         }.edgesIgnoringSafeArea(.all)
         .onAppear {
-            self.getNearByPharmacies()
+            DataService.instance.getNearByPharmacies { (success) in
+                if success {
+                    self.pharmacies = DataService.instance.pharmacies
+                }
+            }
         }
         
     }

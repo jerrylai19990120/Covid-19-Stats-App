@@ -225,12 +225,10 @@ struct SearchView: View {
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            
-                            PharmacyView(gr: gr).padding(.bottom)
-                            
-                            PharmacyView(gr: gr).padding(.bottom)
-                            
-                            PharmacyView(gr: gr).padding(.bottom)
+                            ForEach(self.pharmacies, id: \.self){
+                                i in
+                                PharmacyView(gr: self.gr,title: i.name, addr: i.title, img: Int.random(in: 0...2)).padding(.bottom)
+                            }
                             
                         }.padding(.top)
                     }
@@ -244,6 +242,13 @@ struct SearchView: View {
             
             
         }.frame(height: gr.size.height)
+        .onAppear {
+            DataService.instance.getNearByPharmacies { (success) in
+                if success {
+                    self.pharmacies = DataService.instance.pharmacies
+                }
+            }
+        }
     }
 }
 

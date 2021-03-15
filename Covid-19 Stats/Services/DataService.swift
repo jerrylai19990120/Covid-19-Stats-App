@@ -9,9 +9,33 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import MapKit
+import SwiftUI
 
 class DataService {
     
     static let instance = DataService()
+    
+    var pharmacies = [Pharmacy]()
+    
+    func getNearByPharmacies(completion: @escaping (_ status:Bool)->()){
+        
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "drug store"
+        
+        let search = MKLocalSearch(request: request)
+        search.start { (res, err) in
+            if let res = res {
+                let mapItems = res.mapItems
+                
+                self.pharmacies = mapItems.map({
+                    Pharmacy(placemark: $0.placemark)
+                })
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
     
 }

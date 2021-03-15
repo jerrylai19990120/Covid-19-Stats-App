@@ -38,6 +38,7 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
         map.showsUserLocation = true
+        map.tintColor = .blue
         map.delegate = context.coordinator
         return map
     }
