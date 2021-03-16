@@ -63,6 +63,10 @@ struct CasesSection: View {
     @State var newRecovered = 0
     @State var newDeath = 0
     
+    @State var activePercent:CGFloat = 0.4
+    @State var recoveredPercent:CGFloat = 0.4
+    @State var deathPercent:CGFloat = 0.2
+    
     var formatter = DateFormatter()
     
     
@@ -87,15 +91,15 @@ struct CasesSection: View {
             HStack(spacing: 2){
                 RoundedRectangle(cornerRadius: 6)
                     .fill(self.activeColor)
-                    .frame(width: gr.size.width*0.92*0.4, height: gr.size.height*0.04)
+                    .frame(width: gr.size.width*0.92*activePercent, height: gr.size.height*0.04)
                 
                 RoundedRectangle(cornerRadius: 6)
                     .fill(self.recoveredColor)
-                    .frame(width: gr.size.width*0.92*0.4, height: gr.size.height*0.04)
+                    .frame(width: gr.size.width*0.92*recoveredPercent, height: gr.size.height*0.04)
                 
                 RoundedRectangle(cornerRadius: 6)
                     .fill(self.deathColor)
-                    .frame(width: gr.size.width*0.92*0.2, height: gr.size.height*0.04)
+                    .frame(width: gr.size.width*0.92*deathPercent, height: gr.size.height*0.04)
                 
             }
             
@@ -152,6 +156,18 @@ struct CasesSection: View {
                         self.newActive = DataService.instance.newActive
                         self.newRecovered = DataService.instance.newRecovered
                         self.newDeath = DataService.instance.newDeath
+                        
+                        let active = Double(self.newActive)
+                        let recovered = Double(self.newRecovered)
+                        let death = Double(self.newDeath)
+                    
+                        
+                        self.activePercent = CGFloat(active / (recovered+death+active))
+                        
+                        self.recoveredPercent = CGFloat(recovered / (recovered+death+active))
+                        
+                        self.deathPercent = CGFloat(death / (recovered+death+active))
+                        
                     }
                 }
         }

@@ -19,6 +19,8 @@ struct SearchView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
+    @State var result = Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)
+    
     @State var pharmacies: [Pharmacy] = [Pharmacy(locationManager: LocationManager(), placemark: MKPlacemark.init(coordinate: CLLocationCoordinate2D(latitude: 23, longitude: 23)))]
     
     var body: some View {
@@ -39,7 +41,16 @@ struct SearchView: View {
                     .frame(width: gr.size.width*0.06)
                     .foregroundColor(tabColor)
                 
-                TextField("Search country stats", text: $query)
+                TextField("Search country stats", text: $query, onEditingChanged: { (success) in
+                    //do nothing
+                }) {
+                    //fetch result
+                    DataService.instance.searchCountry(country: self.query) { (done) in
+                        if done {
+                            self.result = DataService.instance.result
+                        }
+                    }
+                }
                 
             }.padding()
             .frame(width: gr.size.width*0.8)
@@ -47,7 +58,7 @@ struct SearchView: View {
             .cornerRadius(20)
             
             if query != "" {
-                ResultView(gr: gr)
+                ResultView(gr: gr, result: self.$result)
             } else {
                 VStack {
                     HStack {

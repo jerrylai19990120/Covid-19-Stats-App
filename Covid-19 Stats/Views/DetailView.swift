@@ -125,7 +125,7 @@ struct DetailData: View {
             }.offset(y: popup ? -gr.size.height*0.21 : gr.size.height+88)
             
             
-        }.offset(y: popup ? gr.size.height*0.23 : gr.size.height+88)
+        }.offset(y: popup ? gr.size.height*0.26 : gr.size.height+88)
             .animation(.default)
     }
 }

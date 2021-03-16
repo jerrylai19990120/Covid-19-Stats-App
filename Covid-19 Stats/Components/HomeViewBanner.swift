@@ -75,7 +75,7 @@ struct HomeViewBanner: View {
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
                             
-                            NavigationLink(destination: BannerDetailView(gr: gr, title: "What if I tested positive for COVID-19", isSymptoms: false)) {
+                            NavigationLink(destination: BannerDetailView(gr: gr, title: "What if I tested positive for COVID-19", isSymptoms: false).navigationBarTitle("").navigationBarHidden(true)) {
                                 VStack {
                                     Text("Read More")
                                         .foregroundColor(fontColor)

@@ -30,6 +30,9 @@ class DataService {
     var newRecovered = 0
     var newDeath = 0
     
+    //query result
+    var result = Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)
+    
     func getNearByPharmacies(completion: @escaping (_ status:Bool)->()){
         
         let request = MKLocalSearch.Request()
@@ -145,6 +148,39 @@ class DataService {
                         $0.totalInfected > $1.totalInfected
                     })
                     self.topCountries = [] + self.countries[0...9]
+                    completion(true)
+                    
+                    
+                } catch {
+                    completion(false)
+                    print(error.localizedDescription)
+                }
+            } else {
+                completion(false)
+            }
+        }
+    }
+    
+    
+    func searchCountry(country: String, completion: @escaping (_ status: Bool)->()){
+        AF.request("\(BASE_URL)live/country/\(country)").responseJSON { (res) in
+            if res.error == nil {
+                do {
+                    guard let data = res.data else {
+                        completion(false)
+                        return
+                    }
+                    
+                    guard let jsons = try? JSON(data: data).array else {
+                        completion(false)
+                        return
+                    }
+                    
+                    let result = jsons[0]
+                    
+                    let country = Country(name: result["Country"].stringValue, countryCode: result["CountryCode"].stringValue, totalInfected: result["Confirmed"].intValue, active: result["Active"].intValue, recovered: result["Recovered"].intValue, deaths: result["Deaths"].intValue)
+                    
+                    self.result = country
                     completion(true)
                     
                     

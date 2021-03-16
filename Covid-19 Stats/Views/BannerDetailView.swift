@@ -14,7 +14,7 @@ struct BannerDetailView: View {
     
     var title = "Symptoms of COVID-19"
     
-    var isSymptoms = true
+    var isSymptoms = false
     
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
@@ -94,6 +94,7 @@ struct BannerDetailView: View {
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack {
+                        
                         ZStack {
                             RoundedRectangle(cornerRadius: 18)
                             .fill(bgColor)
@@ -116,13 +117,15 @@ struct BannerDetailView: View {
                             }.padding([.leading, .trailing], gr.size.width*0.08)
                             
                         }
+                        
                     }
                 }
             }
             
             
-        }.frame(height: gr.size.height)
-            .offset(y: -gr.size.height*0.06)
+        }
+        
+    
     }
 }
 
