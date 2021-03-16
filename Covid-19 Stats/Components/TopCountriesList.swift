@@ -35,7 +35,7 @@ struct TopCountriesList: View {
                     ForEach(self.topCountries, id: \.self){
                             i in
                             NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
-                                LineChartView(data: [0,0,0], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "\(i.totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
+                                LineChartView(data: [0,0,0], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "\(i.totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small, dropShadow: false).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
                                     .scaleEffect(self.gr.size.width*0.00169)
                             }
                         }
