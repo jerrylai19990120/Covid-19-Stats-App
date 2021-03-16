@@ -33,7 +33,7 @@ struct HomeViewBanner: View {
                             .frame(width: gr.size.width*0.42, height: gr.size.width*0.46)
                             
                         VStack(spacing: gr.size.height*0.02) {
-                            Text("5 Symtomps of Covid - 19")
+                            Text("5 Symptoms of Covid - 19")
                                 .foregroundColor(fontColor)
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
