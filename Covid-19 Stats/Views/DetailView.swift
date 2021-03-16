@@ -13,7 +13,7 @@ struct DetailView: View {
     
     var gr: GeometryProxy
     
-    var activeCases = 13230033
+    var country: Country
     
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
@@ -21,12 +21,16 @@ struct DetailView: View {
     
     @State var popup = false
     
+    @Binding var topCountries: [Country]
+    
+    @Binding var countries: [Country]
+    
     var body: some View {
         ZStack {
             fontColor
             ZStack {
                 
-                DetailData(gr: gr, popup: $popup)
+                DetailData(gr: gr, popup: $popup, topCountries: self.$topCountries, countries: self.$countries)
                 
                 VStack {
                     
@@ -45,7 +49,7 @@ struct DetailView: View {
                             
                             Spacer()
                             
-                            Text("\(self.countryFlag(countryCode: "US")) USA")
+                            Text("\(self.countryFlag(countryCode: country.countryCode)) \(country.name)")
                                 .foregroundColor(.white)
                                 .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
                                 .padding(.trailing, gr.size.width*0.1)
@@ -55,7 +59,7 @@ struct DetailView: View {
                             
                         }.padding()
                         
-                        Text("\(activeCases)")
+                        Text("\(country.active)")
                             .foregroundColor(.white)
                             .font(.system(size: gr.size.width*0.1, weight: .semibold, design: .default))
                         
@@ -91,7 +95,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            DetailView(gr: gr)
+            DetailView(gr: gr, country: Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0), topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]), countries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
         }
     }
 }
@@ -101,6 +105,10 @@ struct DetailData: View {
     var gr: GeometryProxy
     
     @Binding var popup: Bool
+    
+    @Binding var topCountries: [Country]
+    
+    @Binding var countries: [Country]
     
     var body: some View {
         ZStack {
@@ -113,7 +121,7 @@ struct DetailData: View {
                 }.frame(height: gr.size.height*0.5)
                     .scaleEffect(gr.size.width*0.0024)
                 
-                TopCountriesList(gr: gr, topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
+                TopCountriesList(gr: gr, topCountries: self.$topCountries, countries: self.$countries)
             }.offset(y: popup ? -gr.size.height*0.21 : gr.size.height+88)
             
             

@@ -14,6 +14,8 @@ struct MainView: View {
     
     @Binding var topCountries: [Country]
     
+    @Binding var countries: [Country]
+    
     var body: some View {
         
         
@@ -23,7 +25,7 @@ struct MainView: View {
                     
                 InfoSection(gr: gr)
                     
-                TopCountriesList(gr: gr, topCountries: self.$topCountries)
+                TopCountriesList(gr: gr, topCountries: self.$topCountries, countries: self.$countries)
                 
             }.frame(height: gr.size.height)
 
@@ -37,7 +39,7 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            MainView(gr: gr, topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
+            MainView(gr: gr, topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]), countries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
         }
     }
 }

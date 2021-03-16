@@ -141,6 +141,9 @@ class DataService {
                     
                         
                     }
+                    self.countries = self.countries.sorted(by: {
+                        $0.totalInfected > $1.totalInfected
+                    })
                     self.topCountries = [] + self.countries[0...9]
                     completion(true)
                     

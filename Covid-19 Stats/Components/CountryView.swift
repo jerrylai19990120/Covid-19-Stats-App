@@ -12,11 +12,7 @@ struct CountryView: View {
     
     var gr: GeometryProxy
     
-    var total = 132023034
-    
-    var active = 13234422
-    var recovered = 132344
-    var deaths = 4342
+    var country: Country
     
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
@@ -36,12 +32,12 @@ struct CountryView: View {
             VStack {
                 HStack {
                     VStack {
-                        Text("\(self.countryFlag(countryCode: "US"))")
-                            .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
+                        Text("\(self.countryFlag(countryCode: country.countryCode))")
+                            .font(.system(size: gr.size.width*0.06, weight: .semibold, design: .default))
                         
-                        Text("USA")
+                        Text(country.name)
                             .foregroundColor(fontColor)
-                            .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
+                            .font(.system(size: gr.size.width*0.06, weight: .semibold, design: .default))
                     }
                     Spacer()
                     VStack {
@@ -49,9 +45,9 @@ struct CountryView: View {
                             .foregroundColor(fontColor)
                             .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .default))
                         
-                        Text("\(total)")
+                        Text("\(country.totalInfected)")
                             .foregroundColor(activeColor)
-                            .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
+                            .font(.system(size: gr.size.width*0.06, weight: .semibold, design: .default))
                     }
                     
                 }.frame(width: gr.size.width*0.8)
@@ -71,12 +67,12 @@ struct CountryView: View {
                                 .frame(width: gr.size.width*0.08)
                         }
                         
-                        Text("\(active)")
+                        Text("\(country.active)")
                             .foregroundColor(activeColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                         Text("Active")
                             .foregroundColor(activeColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                     }
                     
                     VStack {
@@ -93,12 +89,12 @@ struct CountryView: View {
                                 .frame(width: gr.size.width*0.08)
                         }
                         
-                        Text("\(recovered)")
+                        Text("\(country.recovered)")
                             .foregroundColor(recoveredColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                         Text("Recovered")
                             .foregroundColor(recoveredColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                     }
                     
                     VStack {
@@ -116,12 +112,12 @@ struct CountryView: View {
                                 .frame(width: gr.size.width*0.08)
                         }
                         
-                        Text("\(deaths)")
+                        Text("\(country.deaths)")
                             .foregroundColor(deathColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                         Text("Deceased")
                             .foregroundColor(deathColor)
-                            .font(.system(size: gr.size.width*0.046, weight: .medium, design: .default))
+                            .font(.system(size: gr.size.width*0.043, weight: .medium, design: .default))
                     }
                 }.frame(width: gr.size.width*0.9)
             }
@@ -146,7 +142,7 @@ struct CountryView: View {
 struct CountryView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            CountryView(gr: gr)
+            CountryView(gr: gr, country: Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0))
         }
     }
 }

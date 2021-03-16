@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SearchView: View {
     
@@ -18,7 +19,7 @@ struct SearchView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
-    @State var pharmacies: [Pharmacy] = [Pharmacy]()
+    @State var pharmacies: [Pharmacy] = [Pharmacy(locationManager: LocationManager(), placemark: MKPlacemark.init(coordinate: CLLocationCoordinate2D(latitude: 23, longitude: 23)))]
     
     var body: some View {
         VStack {

@@ -23,7 +23,7 @@ struct HomeView: View {
                 
                 ZStack {
                     if self.selection == 0 {
-                        MainView(gr: gr, topCountries: self.$topCountries)
+                        MainView(gr: gr, topCountries: self.$topCountries, countries: self.$countries)
                             .offset(y: -gr.size.height*0.14)
                             
                     }
@@ -47,9 +47,7 @@ struct HomeView: View {
                     DataService.instance.getAllCountries { (success) in
                         if success {
                             self.countries = DataService.instance.countries
-                            self.topCountries = DataService.instance.topCountries.sorted(by: {
-                                $0.totalInfected > $1.totalInfected
-                            })
+                            self.topCountries = DataService.instance.topCountries
                         }
                     }
                 }
