@@ -33,6 +33,9 @@ class DataService {
     //query result
     var result = Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)
     
+    //daily case
+    var dailyCases = [String]()
+    
     func getNearByPharmacies(completion: @escaping (_ status:Bool)->()){
         
         let request = MKLocalSearch.Request()
@@ -194,4 +197,27 @@ class DataService {
         }
     }
     
+    func getCSVData(completion: @escaping (_ status: Bool)->()) {
+        
+        do {
+            
+            let content = try String(contentsOfFile: Bundle.main.path(forResource: "cases", ofType: "csv")!)
+            
+            var parsedCSV: [String] = content.components(separatedBy: "\n")
+            
+            parsedCSV.remove(at: 0)
+            
+            self.dailyCases = parsedCSV
+            completion(true)
+            
+        } catch {
+            completion(false)
+            print(error.localizedDescription)
+            
+        }
+    }
+    
+    
 }
+
+

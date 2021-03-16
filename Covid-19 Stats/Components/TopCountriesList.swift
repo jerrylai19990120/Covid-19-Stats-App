@@ -25,30 +25,26 @@ struct TopCountriesList: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            SubHeader(gr: gr, countries: self.$countries)
+            SubHeader(gr: gr, countries: self.$countries, topCountries: self.$topCountries)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {
                     
+                    
+                        
                     ForEach(self.topCountries, id: \.self){
-                        i in
-                        NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
-                            LineChartView(data: [1,2,5,32,33,37,38,39,43], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "100,000,200", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
-                                .scaleEffect(self.gr.size.width*0.00169)
+                            i in
+                            NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
+                                LineChartView(data: [0,0,0], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "\(i.totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
+                                    .scaleEffect(self.gr.size.width*0.00169)
+                            }
                         }
-                    }
                     
                     
-                    
-                    
-                    
-                    
-                    
+
                 }
                 
             }
-        }.onAppear {
-            
         }
     }
     
@@ -81,6 +77,8 @@ struct SubHeader: View {
     
     @Binding var countries: [Country]
     
+    @Binding var topCountries: [Country]
+    
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     
@@ -90,7 +88,7 @@ struct SubHeader: View {
                 .font(.system(size: gr.size.width*0.06, weight: .bold, design: .rounded))
                 .foregroundColor(self.fontColor)
             Spacer()
-            NavigationLink(destination: AllCountriesView(gr: gr, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
+            NavigationLink(destination: AllCountriesView(gr: gr, countries: self.$countries, topCountries: self.$topCountries).navigationBarTitle("").navigationBarHidden(true)) {
                 Text("View All")
                     .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)

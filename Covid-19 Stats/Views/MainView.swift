@@ -16,6 +16,7 @@ struct MainView: View {
     
     @Binding var countries: [Country]
     
+    
     var body: some View {
         
         

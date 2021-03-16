@@ -25,12 +25,13 @@ struct DetailView: View {
     
     @Binding var countries: [Country]
     
+    
     var body: some View {
         ZStack {
             fontColor
             ZStack {
                 
-                DetailData(gr: gr, popup: $popup, topCountries: self.$topCountries, countries: self.$countries)
+                DetailData(gr: gr, popup: $popup, topCountries: self.$topCountries, countries: self.$countries, country: country)
                 
                 VStack {
                     
@@ -110,6 +111,11 @@ struct DetailData: View {
     
     @Binding var countries: [Country]
     
+    @State var country = Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)
+    
+    @State var cases:[Double] = [0,0,0]
+    
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
@@ -117,7 +123,7 @@ struct DetailData: View {
             
             VStack {
                 VStack {
-                    LineView(data: [8,23,54,32,12,37,7,23,43], title: "Total Cases").padding()
+                    LineView(data: cases, title: "Total Cases").padding()
                 }.frame(height: gr.size.height*0.5)
                     .scaleEffect(gr.size.width*0.0024)
                 
@@ -127,5 +133,29 @@ struct DetailData: View {
             
         }.offset(y: popup ? gr.size.height*0.26 : gr.size.height+88)
             .animation(.default)
+            .onAppear {
+                
+                var arr = DataService.instance.dailyCases.filter({
+                    let arr2 = $0.split(separator: ",")
+                   
+                    if arr2.count != 0 {
+                        let val = arr2[0].lowercased()
+                        let match =  self.country.name.lowercased().range(of: val)
+                        return match != nil ? true : false
+                    } else {
+                        return false
+                    }
+                    
+                })
+                
+                if arr.count != 0 {
+                    var items = arr[0].split(separator: ",")
+                    items.remove(at: 0)
+                    let cases = items.map({Double(String($0))!})
+                    self.cases = cases
+                    
+                }
+                
+        }
     }
 }

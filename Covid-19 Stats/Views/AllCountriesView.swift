@@ -14,6 +14,8 @@ struct AllCountriesView: View {
     
     @Binding var countries: [Country]
     
+    @Binding var topCountries: [Country]
+    
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
@@ -59,7 +61,10 @@ struct AllCountriesView: View {
                 VStack {
                     ForEach(self.countries, id: \.self){
                         i in
-                        CountryView(gr: self.gr, country: i)
+                        NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
+                            CountryView(gr: self.gr, country: i)
+                        }
+                        
                     }
                 }
             }
@@ -72,7 +77,7 @@ struct AllCountriesView: View {
 struct AllCountriesView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            AllCountriesView(gr: gr, countries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
+            AllCountriesView(gr: gr, countries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]), topCountries: .constant([Country(name: "", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]))
         }
     }
 }

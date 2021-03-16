@@ -17,6 +17,7 @@ struct HomeView: View {
     
     @State var topCountries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
     
+    
     var body: some View {
         NavigationView {
             GeometryReader { gr in
@@ -48,6 +49,12 @@ struct HomeView: View {
                         if success {
                             self.countries = DataService.instance.countries
                             self.topCountries = DataService.instance.topCountries
+                            
+                            DataService.instance.getCSVData { (success) in
+                                if success {
+                                    
+                                }
+                            }
                         }
                     }
                 }
@@ -57,6 +64,7 @@ struct HomeView: View {
         }.navigationBarTitle("")
         .navigationBarHidden(true)
         .accentColor(.white)
+        
         
     }
     
