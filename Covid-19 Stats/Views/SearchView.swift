@@ -90,7 +90,8 @@ struct SearchView: View {
                             }.clipped()
                             .cornerRadius(20)
                             .contextMenu {
-                                Text("Mask on in public areas 😷")
+                                Text("Mask on in public areas at all times 😷")
+                                Text("Mask should be covering both nose and mouth 😷")
                             }
                             
                             ZStack {
@@ -124,6 +125,7 @@ struct SearchView: View {
                             .cornerRadius(20)
                             .contextMenu {
                                 Text("Use hand sanitizer frequently 🧴")
+                                Text("Use it for at least 20 seconds thoroughly")
                             }
                             
                             ZStack {
@@ -156,6 +158,7 @@ struct SearchView: View {
                             .cornerRadius(20)
                             .contextMenu {
                                 Text("Stay 6 feet away from each other 🧍‍♀️6️⃣🧍‍♂️")
+                                Text("Keep safe distance in public")
                             }
                             
                             ZStack {
@@ -191,6 +194,8 @@ struct SearchView: View {
                             .cornerRadius(20)
                             .contextMenu {
                                 Text("Always wash your hands 🧼")
+                                Text("Wash your hands with soap for at least 20 seconds")
+                                Text("Including palm, finger tips and finger gaps")
                             }
                             
                             

@@ -60,7 +60,7 @@ struct BannerDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 18)
                             .fill(bgColor)
-                            .frame(width: gr.size.width*0.9, height: gr.size.height*0.36)
+                            .frame(width: gr.size.width*0.9, height: gr.size.height*0.38)
                             
                             VStack(alignment: .leading, spacing: gr.size.width*0.02) {
                                 Text("You can infect others even if you aren’t showing symptoms")
@@ -94,13 +94,35 @@ struct BannerDetailView: View {
             } else {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack {
-                        Text("")
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 18)
+                            .fill(bgColor)
+                            .frame(width: gr.size.width*0.9, height: gr.size.height*0.38)
+                            
+                            VStack(alignment: .leading, spacing: gr.size.width*0.06) {
+                                Text("If you’ve tested positive")
+                                    .foregroundColor(fontColor)
+                                    .font(.system(size: gr.size.width*0.043, weight: .semibold, design: .rounded))
+                                
+                                Text("If you've received a positive test result for COVID-19, you must isolate at home, whether you have symptoms or not. Remain isolated for up to 14 days or as directed by your local public health authority.")
+                                    .foregroundColor(tabColor)
+                                    .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
+                                
+                                Text("If you didn’t have symptoms when you got tested but develop them during your isolation period, you must restart your isolation time as directed by the local public health authority.")
+                                    .foregroundColor(tabColor)
+                                    .font(.system(size: gr.size.width*0.04, weight: .semibold, design: .rounded))
+                                
+                                
+                            }.padding([.leading, .trailing], gr.size.width*0.08)
+                            
+                        }
                     }
                 }
             }
             
             
-        }
+        }.frame(height: gr.size.height)
+            .offset(y: -gr.size.height*0.06)
     }
 }
 
