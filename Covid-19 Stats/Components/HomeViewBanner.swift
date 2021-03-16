@@ -38,16 +38,19 @@ struct HomeViewBanner: View {
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
                             
-                            VStack {
-                                Text("Read More")
-                                    .foregroundColor(fontColor)
-                                    .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
-                                
-                                Rectangle()
-                                    .fill(fontColor)
-                                    .frame(width: gr.size.width*0.2, height: 2)
-                                
+                            NavigationLink(destination: BannerDetailView(gr: self.gr, title: "Symptoms of COVID-19", isSymptoms: true).navigationBarTitle("").navigationBarHidden(true)) {
+                                VStack {
+                                    Text("Read More")
+                                        .foregroundColor(fontColor)
+                                        .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
+                                    
+                                    Rectangle()
+                                        .fill(fontColor)
+                                        .frame(width: gr.size.width*0.2, height: 2)
+                                    
+                                }
                             }
+                            
                             
                         }.offset(x: -gr.size.width*0.06)
                     }
@@ -72,15 +75,18 @@ struct HomeViewBanner: View {
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
                             
-                            VStack {
-                                Text("Read More")
-                                    .foregroundColor(fontColor)
-                                    .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
-                                Rectangle()
-                                    .fill(fontColor)
-                                    .frame(width: gr.size.width*0.2, height: 2)
-                                
+                            NavigationLink(destination: BannerDetailView(gr: gr, title: "What if I tested positive for COVID-19", isSymptoms: false)) {
+                                VStack {
+                                    Text("Read More")
+                                        .foregroundColor(fontColor)
+                                        .font(.system(size: gr.size.width*0.048, weight: .semibold, design: .rounded))
+                                    Rectangle()
+                                        .fill(fontColor)
+                                        .frame(width: gr.size.width*0.2, height: 2)
+                                    
+                                }
                             }
+                            
                             
                         }.offset(x: -gr.size.width*0.1)
                     }
