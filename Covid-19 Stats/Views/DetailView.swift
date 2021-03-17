@@ -48,7 +48,7 @@ struct DetailView: View {
                     Spacer()
                     
                 }.frame(height: gr.size.height)
-                .offset(y: -gr.size.height*0.05)
+                .offset(y: -gr.size.height*0.03)
                     
             }
             

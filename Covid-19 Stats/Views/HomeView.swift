@@ -27,9 +27,7 @@ struct HomeView: View {
                     if self.selection == 0 {
                         MainView(gr: gr, topCountries: self.$topCountries, countries: self.$countries)
                             .offset(y: -gr.size.height*0.14)
-                            .onAppear {
-                                
-                        }
+                            
                             
                     }
                     
@@ -54,7 +52,7 @@ struct HomeView: View {
                             self.countries = DataService.instance.countries
                             self.topCountries = DataService.instance.topCountries
                             
-                            print("hi")
+                            
                             DataService.instance.getCSVData { (success) in
                                 if success {
                                      NotificationCenter.default.post(name: NOTIF_TOP_COUNTRIES_LOADED, object: nil)

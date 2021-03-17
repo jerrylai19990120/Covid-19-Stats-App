@@ -23,6 +23,10 @@ struct SearchView: View {
     
     @State var pharmacies: [Pharmacy] = [Pharmacy(locationManager: LocationManager(), placemark: MKPlacemark.init(coordinate: CLLocationCoordinate2D(latitude: 23, longitude: 23)))]
     
+    @State var tag: Int?
+    
+    @State var coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    
     var body: some View {
         VStack {
             HStack {
@@ -223,28 +227,51 @@ struct SearchView: View {
                             .font(.system(size: gr.size.width*0.06, weight: .medium, design: .rounded))
                         Spacer()
                         
-                        NavigationLink(destination: MapUIView(gr: gr).navigationBarTitle("").navigationBarHidden(true)) {
-                            HStack(spacing: 2) {
-                                Text("map")
-                                    .foregroundColor(fontColor)
-                                    .font(.system(size: gr.size.width*0.05, weight: .medium, design: .rounded))
+                        NavigationLink(destination: MapUIView(gr: gr,  coordinate: self.$coordinate).navigationBarItems(trailing: Text("Tap to refresh nearby pharmacies")
+                            .foregroundColor(fontColor)
+                            .font(.system(size: gr.size.width*0.04, weight: .medium, design: .rounded))), tag: -1, selection: self.$tag) {
                                 
-                                Image(systemName: "chevron.right")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .foregroundColor(fontColor)
-                                    .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
-                                
-                            }
+                                Button(action: {
+                                    self.coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                                    self.tag = -1
+                                }) {
+                                    HStack(spacing: 2) {
+                                        Text("map")
+                                            .foregroundColor(fontColor)
+                                            .font(.system(size: gr.size.width*0.05, weight: .medium, design: .rounded))
+                                        
+                                        Image(systemName: "chevron.right")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .foregroundColor(fontColor)
+                                            .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
+                                        
+                                    }
+                                }
+                            
                         }
                         
                     }
                     
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack {
-                            ForEach(self.pharmacies, id: \.self){
+                            ForEach(0..<self.pharmacies.count, id: \.self){
                                 i in
-                                PharmacyView(gr: self.gr,title: i.name, addr: i.title, distance: Int(i.distance*0.000621371),img: Int.random(in: 0...2)).padding(.bottom)
+                                NavigationLink(destination: MapUIView(gr: self.gr, coordinate: self.$coordinate).navigationBarItems(trailing: Text("Tap to refresh nearby pharmacies")
+                                    .foregroundColor(self.fontColor)
+                                    .font(.system(size: self.gr.size.width*0.04, weight: .medium, design: .rounded))), tag: i, selection: self.$tag) {
+                                    Button(action: {
+                                        DataService.instance.getPlaceMark(addr: self.pharmacies[i].title) { (place) in
+                                            self.coordinate.latitude = place!.latitude
+                                            self.coordinate.longitude = place!.longitude
+                                            
+                                            self.tag = i
+                                        }
+                                    }) {
+                                        PharmacyView(gr: self.gr,title: self.pharmacies[i].name, addr: self.pharmacies[i].title, distance: Int(self.pharmacies[i].distance*0.000621371),img: Int.random(in: 0...2)).padding(.bottom)
+                                    }
+                                }
+                                
                             }
                             
                         }.padding(.top)

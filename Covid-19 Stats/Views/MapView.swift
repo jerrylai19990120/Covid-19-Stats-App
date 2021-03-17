@@ -19,6 +19,7 @@ class Coordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didAdd views: [MKAnnotationView]) {
+        
         if let annotationView = views.first {
             if let annotation = annotationView.annotation {
                 if annotation is MKUserLocation {
@@ -27,6 +28,8 @@ class Coordinator: NSObject, MKMapViewDelegate {
                 }
             }
         }
+        
+        
     }
     
     //use to render route from location to location
@@ -37,11 +40,19 @@ class Coordinator: NSObject, MKMapViewDelegate {
         return renderer
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        DataService.instance.getRouteToPharmacy(map: mapView, destination: MKPlacemark(coordinate: view.annotation!.coordinate))
+    }
+    
+    
+    
 }
 
 struct MapView: UIViewRepresentable {
     
     let pharmacies: [Pharmacy]
+    
+    let coordinate: CLLocationCoordinate2D
     
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
@@ -57,7 +68,16 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        updateAnnotation(from: uiView)
+        if Double(self.coordinate.latitude) != Double(0) && Double(self.coordinate.longitude) != Double(0){
+            uiView.removeAnnotations(uiView.annotations)
+            uiView.removeOverlays(uiView.overlays)
+            DataService.instance.getRouteToPharmacy(map: uiView, destination: MKPlacemark(coordinate: self.coordinate))
+            uiView.addAnnotation(DestinationPin(self.coordinate))
+            
+        } else {
+            updateAnnotation(from: uiView)
+        }
+        
     }
     
     private func updateAnnotation(from mapView: MKMapView){
@@ -65,6 +85,8 @@ struct MapView: UIViewRepresentable {
         let annotations = self.pharmacies.map(PharmacyAnnotation.init)
         mapView.addAnnotations(annotations)
     }
+    
+    
     
     
 }

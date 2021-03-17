@@ -218,6 +218,21 @@ class DataService {
     }
     
     
+    func getPlaceMark(addr: String, completion: @escaping (_ place: CLLocationCoordinate2D?)->()){
+        
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(addr) { (placemarks, error) in
+            guard let coordinate = placemarks?.first?.location?.coordinate else {
+                completion(nil)
+                return
+            }
+            
+            completion(coordinate)
+        }
+    }
+    
+    
 }
 
 

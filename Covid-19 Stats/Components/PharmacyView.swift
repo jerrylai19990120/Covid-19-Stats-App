@@ -24,7 +24,7 @@ struct PharmacyView: View {
     
     var title = "Shoppers Pharmacy"
     
-    var addr = "100 Square one Drive, M2D 0L2, Mississauga, ON, Canada"
+    var addr = ""
     
     var distance = 10
     
@@ -58,6 +58,7 @@ struct PharmacyView: View {
             }
             
         }.frame(width: gr.size.width*0.9, height: gr.size.height*0.16)
+        
         
     }
 }

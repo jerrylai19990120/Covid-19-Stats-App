@@ -11,6 +11,7 @@
 		921A972E25FAD22600B1B425 /* HomeViewBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A972D25FAD22600B1B425 /* HomeViewBanner.swift */; };
 		921A973125FAE27700B1B425 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 921A973025FAE27700B1B425 /* SwiftUICharts */; };
 		921A973325FAE46D00B1B425 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921A973225FAE46D00B1B425 /* CustomTabBar.swift */; };
+		9246CAA12602BB2200F73610 /* DestinationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9246CAA02602BB2200F73610 /* DestinationPin.swift */; };
 		924AB38F25FC0EA4005E2003 /* OptionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924AB38E25FC0EA4005E2003 /* OptionsBar.swift */; };
 		924AB39125FC1ECA005E2003 /* InfoSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924AB39025FC1ECA005E2003 /* InfoSection.swift */; };
 		924AB39425FC1F26005E2003 /* VacinationSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 924AB39325FC1F26005E2003 /* VacinationSection.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		921A972D25FAD22600B1B425 /* HomeViewBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewBanner.swift; sourceTree = "<group>"; };
 		921A973225FAE46D00B1B425 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		9246CAA02602BB2200F73610 /* DestinationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationPin.swift; sourceTree = "<group>"; };
 		924AB38E25FC0EA4005E2003 /* OptionsBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsBar.swift; sourceTree = "<group>"; };
 		924AB39025FC1ECA005E2003 /* InfoSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoSection.swift; sourceTree = "<group>"; };
 		924AB39325FC1F26005E2003 /* VacinationSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VacinationSection.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				92D7CEFD25FD2BBB000AF603 /* Country.swift */,
 				92D7CF1925FED236000AF603 /* Pharmacy.swift */,
 				92D7CF1B25FED2E3000AF603 /* PharmacyAnnotation.swift */,
+				9246CAA02602BB2200F73610 /* DestinationPin.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -376,6 +379,7 @@
 				92D7CEF925FCC89C000AF603 /* CountriesView.swift in Sources */,
 				92D7CEFB25FCC8AA000AF603 /* SearchView.swift in Sources */,
 				92D7CF0A25FE77A2000AF603 /* DataService.swift in Sources */,
+				9246CAA12602BB2200F73610 /* DestinationPin.swift in Sources */,
 				92D7CF1F26000445000AF603 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -514,7 +518,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.18;
+				CURRENT_PROJECT_VERSION = 1.0.21;
 				DEVELOPMENT_ASSET_PATHS = "\"Covid-19 Stats/Preview Content\"";
 				DEVELOPMENT_TEAM = 8L83CZ8839;
 				ENABLE_PREVIEWS = YES;
@@ -536,7 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.18;
+				CURRENT_PROJECT_VERSION = 1.0.21;
 				DEVELOPMENT_ASSET_PATHS = "\"Covid-19 Stats/Preview Content\"";
 				DEVELOPMENT_TEAM = 8L83CZ8839;
 				ENABLE_PREVIEWS = YES;

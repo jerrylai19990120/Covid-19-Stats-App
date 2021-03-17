@@ -15,6 +15,8 @@ struct MapUIView: View {
     
     @State var pharmacies: [Pharmacy] = [Pharmacy]()
     
+    @Binding var coordinate: CLLocationCoordinate2D
+    
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
@@ -22,34 +24,29 @@ struct MapUIView: View {
     var body: some View {
         ZStack(alignment: .top) {
             
-            MapView(pharmacies: self.pharmacies)
+            MapView(pharmacies: self.pharmacies, coordinate: self.coordinate)
                 .onTapGesture {
                 DataService.instance.getNearByPharmacies { (success) in
                     if success {
+                        self.pharmacies = []
+                        self.pharmacies = DataService.instance.pharmacies
+                    }
+                }
+                    
+            }
+            
+        }.edgesIgnoringSafeArea(.all)
+        .onAppear {
+            if Double(self.coordinate.latitude) == Double(0) && Double(self.coordinate.longitude) == Double(0){
+                DataService.instance.getNearByPharmacies { (done) in
+                    if done {
+                        self.pharmacies = []
                         self.pharmacies = DataService.instance.pharmacies
                     }
                 }
             }
             
-            NavigationLink(destination: HomeView().navigationBarTitle("").navigationBarHidden(true)) {
-                HStack {
-                    BackBtn(gr: gr)
-                    Spacer()
-                    Text("Tap to refresh nearby pharmacies")
-                    .foregroundColor(fontColor)
-                        .font(.system(size: gr.size.width*0.04, weight: .medium, design: .rounded))
-                    Spacer()
-                    Spacer()
-                }.padding([.leading, .trailing])
-                
-            }.padding(.top, gr.size.height*0.08)
-        }.edgesIgnoringSafeArea(.all)
-        .onAppear {
-            DataService.instance.getNearByPharmacies { (success) in
-                if success {
-                    self.pharmacies = DataService.instance.pharmacies
-                }
-            }
+            
         }
         
     }
@@ -58,7 +55,7 @@ struct MapUIView: View {
 struct MapUIView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { gr in
-            MapUIView(gr: gr)
+            MapUIView(gr: gr, coordinate: .constant(CLLocationCoordinate2D(latitude: 0, longitude: 0)))
         }
     }
 }
