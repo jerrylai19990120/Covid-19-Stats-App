@@ -52,7 +52,7 @@ struct HomeView: View {
                             
                             DataService.instance.getCSVData { (success) in
                                 if success {
-                                    
+                                     NotificationCenter.default.post(name: NOTIF_TOP_COUNTRIES_LOADED, object: nil)
                                 }
                             }
                         }

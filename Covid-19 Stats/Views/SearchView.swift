@@ -248,7 +248,7 @@ struct SearchView: View {
                             }
                             
                         }.padding(.top)
-                    }
+                    }.animation(.default)
                     
                     
                     

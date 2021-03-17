@@ -37,7 +37,7 @@ struct CountryView: View {
                         
                         Text(country.name)
                             .foregroundColor(fontColor)
-                            .font(.system(size: gr.size.width*0.06, weight: .semibold, design: .default))
+                            .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .default))
                     }
                     Spacer()
                     VStack {

@@ -17,11 +17,17 @@ struct TopCountriesList: View {
     
     @Binding var countries: [Country]
     
+    @State var cases: [[Double]] = [
+        [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]
+    ]
+    
     let styles = [
         ChartStyle(backgroundColor:Color(red: 52/255, green: 138/255, blue: 123/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
         ChartStyle(backgroundColor:Color(red: 255/255, green: 131/255, blue: 104/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
         ChartStyle(backgroundColor: Color(red: 255/255, green: 211/255, blue: 98/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear)
     ]
+    
+    @State var isReady = false
     
     var body: some View {
         VStack(spacing: 0) {
@@ -30,22 +36,68 @@ struct TopCountriesList: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 0) {
                     
-                    
-                        
-                    ForEach(self.topCountries, id: \.self){
+                    if isReady {
+                        ForEach(0...9, id: \.self){
                             i in
-                            NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
-                                LineChartView(data: [0,0,0], title: "\(self.countryFlag(countryCode: i.countryCode)) \(i.name)", legend: "\(i.totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small, dropShadow: false).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
+                            NavigationLink(destination: DetailView(gr: self.gr, country: self.topCountries[i], topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
+                                LineChartView(data: self.cases[i], title: "\(self.countryFlag(countryCode: self.topCountries[i].countryCode)) \(self.topCountries[i].name)", legend: "\(self.topCountries[i].totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small, dropShadow: false).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
                                     .scaleEffect(self.gr.size.width*0.00169)
                             }
                         }
+                    } else {
+                        LineChartView(data: [0,0,0], title: "Unknown", legend: "0", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small, dropShadow: false).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
+                        .scaleEffect(self.gr.size.width*0.00169)
+                    }
+                        
+                        
                     
                     
 
                 }
                 
             }
+        }.onAppear {
+            NotificationCenter.default.addObserver(forName: NOTIF_TOP_COUNTRIES_LOADED, object: nil, queue: nil, using: self.topCountriesLoaded(_:))
+            
         }
+    }
+    
+    func topCountriesLoaded(_ notif: Notification){
+        
+        self.cases = []
+        
+        for country in self.topCountries {
+            
+            var arr = DataService.instance.dailyCases.filter({
+                
+                let arr2 = $0.split(separator: ",")
+                
+                if arr2.count != 0 {
+                    let val = arr2[0].lowercased()
+                    let match =  country.name.lowercased().range(of: val)
+                    return match != nil ? true : false
+                } else {
+                    return false
+                }
+                
+            })
+            
+            
+            
+            if arr.count != 0 {
+                var items = arr[0].split(separator: ",")
+                items.remove(at: 0)
+                let cases = items.map({Double(String($0))!})
+                self.cases.append(cases)
+                
+            }
+            
+        }
+        
+        self.isReady = true
+        
+        
+        
     }
     
     func countryFlag(countryCode: String) -> String {

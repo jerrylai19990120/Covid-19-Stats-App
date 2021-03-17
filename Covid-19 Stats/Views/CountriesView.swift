@@ -172,19 +172,19 @@ struct SubTabBar: View {
             
             RoundedRectangle(cornerRadius: 20)
                 .fill(tabColor)
-                .frame(width: gr.size.width/4*scale, height: gr.size.height*0.18/4)
-                .offset(x: -gr.size.width/2.96+offset)
+                .frame(width: gr.size.width/4*1.3, height: gr.size.height*0.18/4)
+                .offset(x: -gr.size.width/3.38+offset)
             
             HStack {
                 
                 Button(action: {
                     self.selection = 0
                     self.offset = 0
-                    self.scale = 1
+                    self.scale = 1.3
                 }) {
                     Text("High to low")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
-                        .foregroundColor(selection==0 ? fontColor: tabColor)
+                        .foregroundColor(selection==0 ? fontColor: tabColor).padding()
                 }
                 
                 Spacer()
@@ -197,6 +197,7 @@ struct SubTabBar: View {
                     Text("Low to high")
                         .font(.system(size: gr.size.width*0.04, weight: .bold, design: .rounded))
                         .foregroundColor(selection==1 ? fontColor: tabColor)
+                        .padding()
                 }
                 
                 

@@ -35,7 +35,7 @@ struct AllCountriesView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .fill(tabColor)
                         .frame(width: gr.size.width*0.28, height: gr.size.height*0.05)
-                        .offset(x: selection==0 ? -gr.size.width*0.14 : gr.size.width*0.13)
+                        .offset(x: selection==0 ? -gr.size.width*0.18 : gr.size.width*0.17)
                     
                     HStack(spacing: gr.size.width*0.04) {
                         Button(action: {
@@ -44,6 +44,7 @@ struct AllCountriesView: View {
                             Text("High to low")
                                 .foregroundColor(selection==0 ? fontColor : tabColor)
                                 .font(.system(size: gr.size.width*0.046, weight: .medium, design: .rounded))
+                                .padding()
                         }
                         
                         Button(action: {
@@ -52,14 +53,18 @@ struct AllCountriesView: View {
                             Text("Low to high")
                                 .foregroundColor(selection==1 ? fontColor : tabColor)
                                 .font(.system(size: gr.size.width*0.046, weight: .medium, design: .rounded))
+                                .padding()
                         }
                         
                     }
                 }.animation(.default)
+                
             }.padding([.leading, .trailing])
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
-                    ForEach(self.countries, id: \.self){
+                    ForEach(self.countries.sorted(by: {
+                        self.selection==0 ? $0.totalInfected > $1.totalInfected : $0.totalInfected < $1.totalInfected
+                    }), id: \.self){
                         i in
                         NavigationLink(destination: DetailView(gr: self.gr, country: i, topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
                             CountryView(gr: self.gr, country: i)

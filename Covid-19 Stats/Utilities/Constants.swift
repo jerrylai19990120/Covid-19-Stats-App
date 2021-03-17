@@ -10,3 +10,4 @@ import Foundation
 
 let BASE_URL = "https://api.covid19api.com/"
 
+let NOTIF_TOP_COUNTRIES_LOADED = Notification.Name("top countries loaded")
