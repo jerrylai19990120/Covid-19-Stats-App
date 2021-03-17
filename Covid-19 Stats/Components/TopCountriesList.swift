@@ -21,6 +21,7 @@ struct TopCountriesList: View {
         [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]
     ]
     
+    
     let styles = [
         ChartStyle(backgroundColor:Color(red: 52/255, green: 138/255, blue: 123/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
         ChartStyle(backgroundColor:Color(red: 255/255, green: 131/255, blue: 104/255), accentColor: .white, secondGradientColor: .white, textColor: .white, legendTextColor: .white, dropShadowColor: .clear),
@@ -39,7 +40,7 @@ struct TopCountriesList: View {
                     if isReady {
                         ForEach(0...9, id: \.self){
                             i in
-                            NavigationLink(destination: DetailView(gr: self.gr, country: self.topCountries[i], topCountries: self.$topCountries, countries: self.$countries).navigationBarTitle("").navigationBarHidden(true)) {
+                            NavigationLink(destination: DetailView(gr: self.gr, country: self.topCountries[i], topCountries: self.$topCountries, countries: self.$countries)) {
                                 LineChartView(data: self.cases[i], title: "\(self.countryFlag(countryCode: self.topCountries[i].countryCode)) \(self.topCountries[i].name)", legend: "\(self.topCountries[i].totalInfected)", style: self.styles[Int.random(in: 0...2)], form: ChartForm.small, dropShadow: false).frame(width: self.gr.size.width*0.4, height: self.gr.size.height*0.24)
                                     .scaleEffect(self.gr.size.width*0.00169)
                             }
@@ -57,7 +58,12 @@ struct TopCountriesList: View {
                 
             }
         }.onAppear {
-            NotificationCenter.default.addObserver(forName: NOTIF_TOP_COUNTRIES_LOADED, object: nil, queue: nil, using: self.topCountriesLoaded(_:))
+            if DataService.instance.dailyCases.count == 0 {
+                NotificationCenter.default.addObserver(forName: NOTIF_TOP_COUNTRIES_LOADED, object: nil, queue: nil, using: self.topCountriesLoaded(_:))
+            } else {
+                self.topCountriesLoaded(Notification(name: NOTIF_TOP_COUNTRIES_LOADED))
+            }
+            
             
         }
     }
@@ -131,6 +137,8 @@ struct SubHeader: View {
     
     @Binding var topCountries: [Country]
     
+    @State var selection = 0
+    
     var bgColor = Color(red: 235/255, green: 243/255, blue: 242/255)
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     
@@ -140,7 +148,7 @@ struct SubHeader: View {
                 .font(.system(size: gr.size.width*0.06, weight: .bold, design: .rounded))
                 .foregroundColor(self.fontColor)
             Spacer()
-            NavigationLink(destination: AllCountriesView(gr: gr, countries: self.$countries, topCountries: self.$topCountries).navigationBarTitle("").navigationBarHidden(true)) {
+            NavigationLink(destination: AllCountriesView(gr: gr, countries: self.$countries, topCountries: self.$topCountries, selection: self.$selection).navigationBarItems(trailing: SortingHeader(gr: self.gr, selection: self.$selection))) {
                 Text("View All")
                     .font(.system(size: gr.size.width*0.05, weight: .semibold, design: .rounded))
                     .foregroundColor(self.fontColor)

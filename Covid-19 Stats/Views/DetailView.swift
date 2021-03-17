@@ -33,51 +33,31 @@ struct DetailView: View {
                 
                 DetailData(gr: gr, popup: $popup, topCountries: self.$topCountries, countries: self.$countries, country: country)
                 
-                VStack {
+                VStack(alignment: .center) {
                     
-                    VStack(alignment: .center) {
-                        HStack {
-                            NavigationLink(destination: HomeView().navigationBarTitle("").navigationBarHidden(true)) {
-                                Image(systemName: "chevron.left")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: gr.size.width*0.03, height: gr.size.width*0.03)
-                                    .padding()
-                                    .foregroundColor(tabColor)
-                                    .overlay(RoundedRectangle(cornerRadius: 10).stroke(tabColor, lineWidth: 2))
-                            }
-                            
-                            
-                            Spacer()
-                            
-                            Text("\(self.countryFlag(countryCode: country.countryCode)) \(country.name)")
-                                .foregroundColor(.white)
-                                .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
-                                .padding(.trailing, gr.size.width*0.1)
-                            
-                            Spacer()
-                            
-                            
-                        }.padding()
+                    Text("\(self.countryFlag(countryCode: country.countryCode)) \(country.name)")
+                        .foregroundColor(.white)
+                        .font(.system(size: gr.size.width*0.07, weight: .semibold, design: .default))
+                        .padding(.trailing, gr.size.width*0.1)
                         
-                        Text("\(country.active)")
-                            .foregroundColor(.white)
-                            .font(.system(size: gr.size.width*0.1, weight: .semibold, design: .default))
-                        
-                        
-                        
-                    }
+                    
+                    Text("\(country.active)")
+                        .foregroundColor(.white)
+                        .font(.system(size: gr.size.width*0.1, weight: .semibold, design: .default))
+                    
                     Spacer()
-                }
-            }.offset(y: gr.size.height*0.05)
+                    
+                }.frame(height: gr.size.height)
+                .offset(y: -gr.size.height*0.05)
+                    
+            }
+            
             
         }.edgesIgnoringSafeArea([.top, .bottom])
         .onAppear {
-                self.popup = true
+            self.popup = true
         }
-        .onDisappear {
-            self.popup = false
-        }
+        
     }
     
     func countryFlag(countryCode: String) -> String {
@@ -120,6 +100,7 @@ struct DetailData: View {
         ZStack {
             RoundedRectangle(cornerRadius: 30)
                 .fill(Color.white)
+            
             
             VStack {
                 VStack {

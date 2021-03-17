@@ -17,6 +17,7 @@ struct HomeView: View {
     
     @State var topCountries = [Country(name: "Unknown", countryCode: "", totalInfected: 0, active: 0, recovered: 0, deaths: 0)]
     
+    var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
     var body: some View {
         NavigationView {
@@ -26,6 +27,9 @@ struct HomeView: View {
                     if self.selection == 0 {
                         MainView(gr: gr, topCountries: self.$topCountries, countries: self.$countries)
                             .offset(y: -gr.size.height*0.14)
+                            .onAppear {
+                                
+                        }
                             
                     }
                     
@@ -50,6 +54,7 @@ struct HomeView: View {
                             self.countries = DataService.instance.countries
                             self.topCountries = DataService.instance.topCountries
                             
+                            print("hi")
                             DataService.instance.getCSVData { (success) in
                                 if success {
                                      NotificationCenter.default.post(name: NOTIF_TOP_COUNTRIES_LOADED, object: nil)
@@ -57,13 +62,11 @@ struct HomeView: View {
                             }
                         }
                     }
-                }
+                }.navigationBarTitle("")
                 //zstack
                 
             }//geo reader
-        }.navigationBarTitle("")
-        .navigationBarHidden(true)
-        .accentColor(.white)
+        }.accentColor(tabColor)
         
         
     }
