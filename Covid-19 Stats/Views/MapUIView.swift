@@ -21,6 +21,7 @@ struct MapUIView: View {
     var fontColor = Color(red: 52/255, green: 138/255, blue: 123/255)
     var tabColor = Color(red: 147/255, green: 194/255, blue: 186/255)
     
+    
     var body: some View {
         ZStack(alignment: .top) {
             
@@ -35,6 +36,7 @@ struct MapUIView: View {
                     
             }
             
+            
         }.edgesIgnoringSafeArea(.all)
         .onAppear {
             if Double(self.coordinate.latitude) == Double(0) && Double(self.coordinate.longitude) == Double(0){
@@ -45,8 +47,6 @@ struct MapUIView: View {
                     }
                 }
             }
-            
-            
         }
         
     }

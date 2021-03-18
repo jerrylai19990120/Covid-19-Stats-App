@@ -64,13 +64,19 @@ class DataService {
         request.transportType = .automobile
 
         let directions = MKDirections(request: request)
+        
         directions.calculate { response, error in
-          guard let route = response?.routes.first else { return }
+          guard let route = response?.routes.first else {
+            
+            return
+            }
+          
           map.addOverlay(route.polyline)
           map.setVisibleMapRect(
             route.polyline.boundingMapRect,
             edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20),
             animated: true)
+        
         }
         
     }

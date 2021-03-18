@@ -41,9 +41,10 @@ class Coordinator: NSObject, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapView.removeOverlays(mapView.overlays)
         DataService.instance.getRouteToPharmacy(map: mapView, destination: MKPlacemark(coordinate: view.annotation!.coordinate))
+        
     }
-    
     
     
 }
@@ -53,6 +54,7 @@ struct MapView: UIViewRepresentable {
     let pharmacies: [Pharmacy]
     
     let coordinate: CLLocationCoordinate2D
+    
     
     func makeUIView(context: Context) -> MKMapView {
         let map = MKMapView()
@@ -73,7 +75,6 @@ struct MapView: UIViewRepresentable {
             uiView.removeOverlays(uiView.overlays)
             DataService.instance.getRouteToPharmacy(map: uiView, destination: MKPlacemark(coordinate: self.coordinate))
             uiView.addAnnotation(DestinationPin(self.coordinate))
-            
         } else {
             updateAnnotation(from: uiView)
         }
@@ -82,6 +83,7 @@ struct MapView: UIViewRepresentable {
     
     private func updateAnnotation(from mapView: MKMapView){
         mapView.removeAnnotations(mapView.annotations)
+        mapView.removeOverlays(mapView.overlays)
         let annotations = self.pharmacies.map(PharmacyAnnotation.init)
         mapView.addAnnotations(annotations)
     }
