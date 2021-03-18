@@ -39,7 +39,7 @@ class DataService {
     func getNearByPharmacies(completion: @escaping (_ status:Bool)->()){
         
         let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "drug store"
+        request.naturalLanguageQuery = "pharmacy"
         
         let search = MKLocalSearch(request: request)
         search.start { (res, err) in

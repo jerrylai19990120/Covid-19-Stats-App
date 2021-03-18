@@ -33,12 +33,14 @@ struct HomeViewBanner: View {
                             .frame(width: gr.size.width*0.42, height: gr.size.width*0.46)
                             
                         VStack(spacing: gr.size.height*0.02) {
-                            Text("5 Symptoms of Covid - 19")
+                            Text("Symptoms of Covid - 19")
                                 .foregroundColor(fontColor)
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
                             
-                            NavigationLink(destination: BannerDetailView(gr: self.gr, title: "Symptoms of COVID-19", isSymptoms: true).navigationBarTitle("").navigationBarHidden(true)) {
+                            NavigationLink(destination: BannerDetailView(gr: self.gr, title: "Symptoms of COVID-19", isSymptoms: true).navigationBarItems(trailing: Text("Covid - 19 Symptoms")
+                                .foregroundColor(fontColor)
+                                .font(.system(size: gr.size.width*0.046, weight: .semibold, design: .rounded)))) {
                                 VStack {
                                     Text("Read More")
                                         .foregroundColor(fontColor)
@@ -75,7 +77,9 @@ struct HomeViewBanner: View {
                                 .font(.system(size: gr.size.width*0.05, weight: .bold, design: .rounded))
                                 .frame(width: gr.size.width*0.5)
                             
-                            NavigationLink(destination: BannerDetailView(gr: gr, title: "What if I tested positive for COVID-19", isSymptoms: false).navigationBarTitle("").navigationBarHidden(true)) {
+                            NavigationLink(destination: BannerDetailView(gr: gr, title: "What if I tested positive for COVID-19", isSymptoms: false).navigationBarItems(trailing: Text("What if I tested positive for COVID-19")
+                            .foregroundColor(fontColor)
+                            .font(.system(size: gr.size.width*0.046, weight: .semibold, design: .rounded)))) {
                                 VStack {
                                     Text("Read More")
                                         .foregroundColor(fontColor)

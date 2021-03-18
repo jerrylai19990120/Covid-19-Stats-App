@@ -35,18 +35,6 @@ struct BannerDetailView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                NavigationLink(destination: HomeView().navigationBarTitle("").navigationBarHidden(true)) {
-                    BackBtn(gr: gr)
-                }
-                
-                Spacer()
-                Text(title)
-                    .foregroundColor(fontColor)
-                    .font(.system(size: gr.size.width*0.046, weight: .semibold, design: .rounded))
-                Spacer()
-                Spacer()
-            }.padding([.leading, .trailing])
             
             if isSymptoms {
                 ScrollView(.vertical, showsIndicators: false) {
@@ -98,7 +86,7 @@ struct BannerDetailView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 18)
                             .fill(bgColor)
-                            .frame(width: gr.size.width*0.9, height: gr.size.height*0.38)
+                            .frame(width: gr.size.width*0.9, height: gr.size.height*0.4)
                             
                             VStack(alignment: .leading, spacing: gr.size.width*0.06) {
                                 Text("If you’ve tested positive")

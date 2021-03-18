@@ -16,7 +16,7 @@ final class PharmacyAnnotation: NSObject, MKAnnotation {
     let coordinate: CLLocationCoordinate2D
     
     init(pharmacy: Pharmacy) {
-        self.title = pharmacy.title
+        self.title = pharmacy.name
         self.coordinate = pharmacy.coordinate
     }
 }
